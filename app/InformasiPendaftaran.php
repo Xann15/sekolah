@@ -8,4 +8,5 @@ class InformasiPendaftaran extends Model
 {
     protected $table = 'informasi_pendaftaran';
     protected $fillable = ['gambar', 'deskripsi', 'status'];
+    protected $connection = 'mysql'; // Add this line
 }

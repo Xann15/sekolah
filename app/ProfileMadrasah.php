@@ -8,4 +8,5 @@ class ProfileMadrasah extends Model
 {
     protected $table = 'profile_madrasah';
     protected $fillable = ['nama', 'deskripsi', 'gambar', 'logo', 'jumlah_rombel', 'jumlah_siswa', 'jumlah_guru', 'jumlah_tendik'];
+    protected $connection = 'mysql'; // Add this line
 }

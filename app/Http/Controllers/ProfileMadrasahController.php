@@ -82,7 +82,7 @@ class ProfileMadrasahController extends Controller
     {
         $madrasah = ProfileMadrasah::first();
         $profile_madrasah = ProfileMadrasah::find($id);
-        return view('profilemadrasah.edit', compact('profile_madrasah','madrasah'));
+        return view('profilemadrasah.edit', compact('profile_madrasah', 'madrasah'));
     }
 
     /**

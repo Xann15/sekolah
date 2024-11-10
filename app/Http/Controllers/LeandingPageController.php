@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\ProfileMadrasah;
-use App\Ekstrakulikuler;
-use App\GuruTendik;
-use App\Contact;
+use Illuminate\Support\Facades\Log;
+
 use App\Berita;
-use App\InformasiPendaftaran;
+use App\Contact;
+use App\GuruTendik;
+use App\Ekstrakulikuler;
+use App\ProfileMadrasah;
 use Illuminate\Http\Request;
+use App\InformasiPendaftaran;
 
 class LeandingPageController extends Controller
 {
     public function index()
     {
         $profile_madrasah = ProfileMadrasah::first();
+        // @dd($profile_madrasah);
+        Log::info($profile_madrasah); // Log the data
         $ekstrakulikuler = Ekstrakulikuler::orderByRaw('created_at DESC')->get();
         $gurutendik = GuruTendik::all();
-        $contact = Contact::first();
+        $contact = Contact::first() ?? new Contact;
         $berita_terbaru = Berita::orderByRaw('created_at DESC')->paginate(6);
-        $informasi_pendaftaran = InformasiPendaftaran::first();
-        return view('welcome', compact('profile_madrasah', 'ekstrakulikuler', 'gurutendik', 'contact', 'berita_terbaru','informasi_pendaftaran'));
+        $informasi_pendaftaran = InformasiPendaftaran::first() ?? new InformasiPendaftaran;
+        return view('welcome', compact('profile_madrasah', 'ekstrakulikuler', 'gurutendik', 'contact', 'berita_terbaru', 'informasi_pendaftaran'));
     }
 
     public function index_berita()
@@ -29,7 +33,7 @@ class LeandingPageController extends Controller
         $contact = Contact::first();
         $berita_terbaru = Berita::orderByRaw('created_at DESC')->paginate(3);
         $berita_all = Berita::orderByRaw('created_at DESC')->whereNotIn('id', $berita_terbaru)->get();
-        return view('berita.index_berita', compact('berita_terbaru','berita_all','contact','madrasah'));
+        return view('berita.index_berita', compact('berita_terbaru', 'berita_all', 'contact', 'madrasah'));
     }
 
     public function show_berita($id)
