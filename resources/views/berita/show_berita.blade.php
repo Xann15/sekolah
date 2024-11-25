@@ -6,7 +6,7 @@
   <div class="container">
 
     <div class="portfolio-details-container">
-      <img src="{{URL::to('/')}}/foto_berita/{{$berita->foto}}" class="img-fluid" alt="">
+      <img src="{{URL::to('/')}}/foto_berita/{{$berita->foto}}" class="img-fluid" style="width: 100%" alt="">
       <div class="portfolio-info">
         <h3>Informasi Berita</h3>
         <ul>

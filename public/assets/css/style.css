@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #14c871;
+  color: #CE1617;
 }
 
 a:hover {
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  background: #16df7e;
+  background: #CE1617;
   color: #fff;
   transition: all 0.4s;
 }
@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #14c871;
+  color: #CE1617;
 }
 
 .nav-menu .drop-down ul {
@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
-  color: #14c871;
+  color: #CE1617;
 }
 
 .nav-menu .drop-down > a:after {
@@ -201,6 +201,10 @@ h1, h2, h3, h4, h5, h6 {
   .nav-menu .drop-down .drop-down > a:after {
     content: "\ea9d";
   }
+}
+
+.fw-bold {
+  font-weight: 600;
 }
 
 /* Get Startet Button */
@@ -282,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #16df7e;
+  color: #CE1617;
   text-decoration: none;
 }
 
@@ -342,9 +346,24 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
-  background: #fff;
+  height: 90vh;
+  background: url('../../gambar_profile/bg.jpg') center center no-repeat;
+  background-size: cover;
   padding-top: 82px;
+  margin-top: calc(50px); /* Menyesuaikan margin-top dengan tinggi navbar (misalnya 50px) */
+  position: relative; /* Agar overlay bisa ditambahkan dengan benar */
+  color: #fff;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Efek redup */
+  z-index: 1; /* Menempatkan overlay di bawah teks */
 }
 
 #hero h1 {
@@ -352,13 +371,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
-  color: #3e4450;
+  color: #fff; /* Mengubah warna teks h1 menjadi putih */
+  z-index: 2; /* Menempatkan teks di atas overlay */
 }
 
 #hero h2 {
-  color: #858ea1;
+  color: #fff; /* Mengubah warna teks h2 menjadi putih */
   margin: 10px 0  30px 0;
   font-size: 24px;
+  z-index: 2; /* Menempatkan teks di atas overlay */
 }
 
 #hero .btn-get-started {
@@ -371,23 +392,27 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
-  background: #16df7e;
-  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+  border: .5px solid #CE1617;
+  background: #CE1617;
+  box-shadow: 0 8px 28px rgba(223, 22, 22, 0.45);
+  z-index: 2; /* Menempatkan tombol di atas overlay */
 }
 
 #hero .btn-get-started:hover {
-  background: #206bfb;
+  background: #ffffff;
   box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+  color: #CE1617;
 }
 
 #hero .btn-watch-video {
   font-size: 16px;
   display: inline-block;
-  padding: 8px 35px 8px 25px;
+  padding: 8px 25px 8px 25px;
   transition: 0.5s;
   margin-left: 10px;
-  color: #5f687b;
+  color: #ffffff;
   position: relative;
+  z-index: 2; /* Menempatkan tombol di atas overlay */
 }
 
 #hero .btn-watch-video i {
@@ -399,7 +424,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-watch-video:hover i {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 #hero .animated {
@@ -409,6 +434,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991px) {
   #hero {
     height: 100vh;
+    margin-top: calc(50px); /* Sesuaikan untuk perangkat mobile */
   }
   #hero .animated {
     -webkit-animation: none;
@@ -460,6 +486,8 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-10px);
   }
 }
+
+
 
 /*--------------------------------------------------------------
 # Sections General
@@ -540,7 +568,7 @@ section {
 }
 
 .featured-services .icon i {
-  color: #16df7e;
+  color: #CE1617;
   font-size: 36px;
 }
 
@@ -560,7 +588,7 @@ section {
 }
 
 .featured-services .icon-box:hover .title a {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 .featured-services .description {
@@ -589,7 +617,7 @@ section {
 .about .content ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #16df7e;
+  color: #CE1617;
 }
 
 .about .content p:last-child {
@@ -606,7 +634,7 @@ section {
 .counts .counters span {
   font-size: 48px;
   display: block;
-  color: #16df7e;
+  color: #CE1617;
   font-weight: 700;
 }
 
@@ -639,7 +667,7 @@ section {
 }
 
 .services .icon-box .icon i {
-  color: #16df7e;
+  color: #CE1617;
   font-size: 36px;
   transition: 0.3s;
 }
@@ -666,7 +694,7 @@ section {
 }
 
 .services .icon-box:hover h4 a {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 /*--------------------------------------------------------------
@@ -693,7 +721,7 @@ section {
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -739,7 +767,7 @@ section {
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link:hover, .portfolio .portfolio-item .portfolio-info .details-link:hover {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 .portfolio .portfolio-item .portfolio-info .details-link {
@@ -825,7 +853,7 @@ section {
 }
 
 .testimonials .owl-dot.active {
-  background-color: #16df7e !important;
+  background-color: #CE1617 !important;
 }
 
 @media (max-width: 767px) {
@@ -838,7 +866,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #16df7e;
+  background: #CE1617;
   background-size: cover;
   padding: 60px 0;
 }
@@ -917,7 +945,7 @@ section {
 }
 
 .team .member .social a:hover {
-  color: #16df7e;
+  color: #CE1617;
 }
 
 .team .member .social i {
@@ -929,8 +957,8 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
-  border-top: 3px solid #16df7e;
-  border-bottom: 3px solid #16df7e;
+  border-top: 3px solid #CE1617;
+  border-bottom: 3px solid #CE1617;
   padding: 30px;
   width: 100%;
   background-color: #f9f9fa;
@@ -938,7 +966,7 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #16df7e;
+  color: #CE1617;
   float: left;
   width: 44px;
   height: 44px;
@@ -985,19 +1013,19 @@ section {
 }
 
 .contact .info .social-links a:hover {
-  background: #16df7e;
+  background: #CE1617;
   color: #fff;
 }
 
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #16df7e;
+  background: #CE1617;
   color: #fff;
 }
 
 .contact .php-form {
   width: 100%;
-  border-top: 3px solid #16df7e;
-  border-bottom: 3px solid #16df7e;
+  border-top: 3px solid #CE1617;
+  border-bottom: 3px solid #CE1617;
   padding: 30px;
   background-color: #f9f9fa;
 }
@@ -1064,7 +1092,7 @@ section {
 }
 
 .contact .php-form input:focus, .contact .php-form textarea:focus {
-  border-color: #16df7e;
+  border-color: #CE1617;
 }
 
 .contact .php-form input {
@@ -1076,7 +1104,7 @@ section {
 }
 
 .contact .php-form button[type="submit"] {
-  background: #16df7e;
+  background: #CE1617;
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -1186,7 +1214,7 @@ section {
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #16df7e !important;
+  background-color: #CE1617 !important;
 }
 
 .portfolio-details .portfolio-info {
@@ -1306,7 +1334,7 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #16df7e;
+  background: #CE1617;
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
@@ -1337,7 +1365,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #16df7e;
+  background: #CE1617;
   color: #fff;
   text-decoration: none;
 }

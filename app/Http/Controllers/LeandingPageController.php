@@ -32,7 +32,7 @@ class LeandingPageController extends Controller
         $madrasah = ProfileMadrasah::first();
         $contact = Contact::first();
         $berita_terbaru = Berita::orderByRaw('created_at DESC')->paginate(3);
-        $berita_all = Berita::orderByRaw('created_at DESC')->whereNotIn('id', $berita_terbaru)->get();
+        $berita_all = Berita::orderByRaw('created_at DESC')->get();
         return view('berita.index_berita', compact('berita_terbaru', 'berita_all', 'contact', 'madrasah'));
     }
 

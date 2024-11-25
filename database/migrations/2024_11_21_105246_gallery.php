@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGurutendikTable extends Migration
+class Gallery extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateGurutendikTable extends Migration
      */
     public function up()
     {
-        Schema::create('gurutendik', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama', 45);
-            $table->string('jabatan', 45);
-            $table->string('foto');
+            $table->string('gambar');
+            $table->string('diposting_oleh', 45);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateGurutendikTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gurutendik');
+        Schema::dropIfExists('gallery');
     }
 }

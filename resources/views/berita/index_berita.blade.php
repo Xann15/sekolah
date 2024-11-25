@@ -61,7 +61,7 @@
         @endforeach
       </div>
     </div>
-
+  </div>
   </div>
 </section><!-- End Portfolio Details Section -->
 @endsection

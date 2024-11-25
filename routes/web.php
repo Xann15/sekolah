@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,26 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'LeandingPageController@index');
+// Route::get('/', 'LeandingPageController@index')->middleware('auth');
+Route::get('/', 'LeandingPageController@index')->middleware('auth');
+
+// Login
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+
+// Register
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name('store');
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
 Route::get('/home/berita/{id}', 'LeandingPageController@show_berita');
 Route::get('/home/berita', 'LeandingPageController@index_berita');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profilemadrasah', 'ProfileMadrasahController');
