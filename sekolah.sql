@@ -1,310 +1,410 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: sekolah
--- ------------------------------------------------------
--- Server version	8.0.30
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 25 Nov 2024 pada 10.25
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `berita`
+-- Database: `sekolah`
 --
 
-DROP TABLE IF EXISTS `berita`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berita`
+--
+
 CREATE TABLE `berita` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `penulis` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `deskripsi` longtext NOT NULL,
+  `penulis` varchar(45) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
-LOCK TABLES `berita` WRITE;
-/*!40000 ALTER TABLE `berita` DISABLE KEYS */;
-/*!40000 ALTER TABLE `berita` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `berita` (`id`, `judul`, `foto`, `deskripsi`, `penulis`, `created_at`, `updated_at`) VALUES
+(1, 'Pertandingan Vollyball SMK Satubangsa Harmoni VS SMK/A Kartini Batam', 'FB-_DSC1811.jpg', 'Pertandingan ini merupakan pertandingan funmatch untuk saling melatih kemampuan dua belah pihak, dan juga sebagai penjalin saudaraan. Adapun peserta putra yang bertanding ialah: Adrian Gideon, Zhairil Zidan, Fharel Marino Pratama, Ibra Movid Syaputera, Abraham, Ruben, Raihan, Hanif, Muhammad Haikal.', 'Pandjie Aldino', '2024-11-18 01:21:13', '2024-11-18 01:21:13'),
+(2, 'Solana: Masa Depan Blockchain dengan Kecepatan Super dan Biaya Rendah', 'FB-_DSC1810.jpg', 'Solana telah menjadi perbincangan hangat di dunia blockchain sebagai platform yang menawarkan transaksi cepat dan biaya yang sangat rendah. Dengan teknologi proof-of-history (PoH), Solana mampu memproses lebih dari 65.000 transaksi per detik, menjadikannya salah satu blockchain tercepat di dunia. Artikel ini membahas keunggulan Solana, proyek-proyek terkemuka yang dibangun di atasnya, serta potensinya dalam mengubah ekosistem kripto secara global.', 'Xann', '2024-11-18 01:29:28', '2024-11-18 01:29:28'),
+(8, 'ac', 'FB-wallhaven-nz6dro.png', '<p><a href=\"https://youtu.be/oa5qxKExXIU?si=WMe0QJx8k8Tkv5iQ\" target=\"_blank\">yt</a><br></p>', 'taktau', '2024-11-24 04:42:32', '2024-11-24 04:42:32');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Struktur dari tabel `contact`
 --
 
-DROP TABLE IF EXISTS `contact`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contact` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telpon` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telpon` varchar(45) DEFAULT NULL,
+  `instagram` varchar(45) DEFAULT NULL,
+  `facebook` varchar(45) DEFAULT NULL,
+  `twitter` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contact`
+-- Dumping data untuk tabel `contact`
 --
 
-LOCK TABLES `contact` WRITE;
-/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `contact` (`id`, `alamat`, `email`, `telpon`, `instagram`, `facebook`, `twitter`, `created_at`, `updated_at`) VALUES
+(2, 'Jl. Bengkong Jaya No.1, Bengkong Laut, Kec. Bengkong, Kota Batam, Kepulauan Riau 29432', 'sekolah@gmail.com', '0123456789', '@instagram', '@facebook', '@twitter', '2024-11-21 03:41:31', '2024-11-21 03:41:31');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `ekstrakulikuler`
+-- Struktur dari tabel `ekstrakulikuler`
 --
 
-DROP TABLE IF EXISTS `ekstrakulikuler`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ekstrakulikuler` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nama` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(45) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `foto` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ekstrakulikuler`
+-- Dumping data untuk tabel `ekstrakulikuler`
 --
 
-LOCK TABLES `ekstrakulikuler` WRITE;
-/*!40000 ALTER TABLE `ekstrakulikuler` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ekstrakulikuler` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `ekstrakulikuler` (`id`, `nama`, `deskripsi`, `foto`, `created_at`, `updated_at`) VALUES
+(10, 'Futsal', 'Ekstrakurikuler futsal melatih teknik, strategi, dan sportivitas siswa. Dengan latihan rutin dan bimbingan pelatih, tim aktif berlaga di kompetisi. Kegiatan ini membangun karakter, kerjasama, dan semangat juang.', 'futsal.jpeg', '2024-11-21 02:10:15', '2024-11-21 02:10:15'),
+(11, 'Badminton', 'Ekstrakurikuler badminton melatih teknik dasar, stamina, dan ketangkasan. Dengan bimbingan pelatih, siswa diasah untuk kompetisi dan membangun semangat sportivitas, disiplin, serta prestasi.', 'badmin.jpeg', '2024-11-21 02:10:15', '2024-11-21 02:10:15'),
+(12, 'VollyBall', 'Ekstrakurikuler voli melatih teknik passing, smash, dan teamwork. Dengan bimbingan pelatih, siswa diajak bermain penuh semangat untuk kompetisi dan membangun sportivitas.', 'volly.jpg', '2024-11-21 02:10:15', '2024-11-21 02:10:15'),
+(13, 'Tari', 'Ekstrakurikuler tari mengajarkan gerakan seni tradisional dan modern. Melalui latihan rutin, siswa diajak mengekspresikan diri, melestarikan budaya, serta tampil dalam acara sekolah dan lomba.', 'tari.jpeg', '2024-11-21 02:10:15', '2024-11-21 02:10:15'),
+(14, 'MMA', 'Ekstrakurikuler MMA melatih teknik bela diri, kekuatan, dan fokus. Kegiatan ini membangun disiplin, keberanian, dan mental juara. Terbuka bagi siswa pemula maupun yang berpengalaman.', 'mma.jpeg', '2024-11-21 02:10:15', '2024-11-21 02:10:15');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `failed_jobs`
+-- Struktur dari tabel `gallery`
 --
 
-LOCK TABLES `failed_jobs` WRITE;
-/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `gurutendik`
---
-
-DROP TABLE IF EXISTS `gurutendik`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gurutendik` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nama` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jabatan` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `motto` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `facebook` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+CREATE TABLE `gallery` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `diposting_oleh` varchar(45) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `gurutendik`
+-- Struktur dari tabel `gurutendik`
 --
 
-LOCK TABLES `gurutendik` WRITE;
-/*!40000 ALTER TABLE `gurutendik` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gurutendik` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `gurutendik` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(45) NOT NULL,
+  `jabatan` varchar(45) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Table structure for table `informasi_pendaftaran`
+-- Dumping data untuk tabel `gurutendik`
 --
 
-DROP TABLE IF EXISTS `informasi_pendaftaran`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+INSERT INTO `gurutendik` (`id`, `nama`, `jabatan`, `foto`, `created_at`, `updated_at`) VALUES
+(9, 'Guru 1', 'Jabatan 1', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(10, 'Guru 2', 'Jabatan 2', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(11, 'Guru 3', 'Jabatan 3', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(12, 'Guru 4', 'Jabatan 4', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(13, 'Guru 5', 'Jabatan 5', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(14, 'Guru 6', 'Jabatan 6', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(15, 'Guru 7', 'Jabatan 7', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49'),
+(16, 'Guru 8', 'Jabatan 8', 'GTK-_DSC1881.JPG', '2024-11-21 02:20:49', '2024-11-21 02:20:49');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `informasi_pendaftaran`
+--
+
 CREATE TABLE `informasi_pendaftaran` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `deskripsi` longtext NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `informasi_pendaftaran`
+-- Dumping data untuk tabel `informasi_pendaftaran`
 --
 
-LOCK TABLES `informasi_pendaftaran` WRITE;
-/*!40000 ALTER TABLE `informasi_pendaftaran` DISABLE KEYS */;
-/*!40000 ALTER TABLE `informasi_pendaftaran` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `informasi_pendaftaran` (`id`, `gambar`, `deskripsi`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ak.jpeg', 'Selamat datang di Sekolah Satubangsa Harmoni Batam! Kami membuka pendaftaran untuk calon siswa baru tahun ajaran 2024/2025. Berikut adalah informasi penting terkait proses pendaftaran', 1, '2024-11-18 09:05:24', '2024-11-18 09:05:24');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `migrations`
---
-
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_26_114653_create_profile_madrasah_table',1),(5,'2020_12_27_175723_create_ekstrakulikuler_table',1),(6,'2020_12_28_062834_create_gurutendik_table',1),(7,'2020_12_28_155258_create_contact_table',1),(8,'2020_12_28_172531_create_berita_table',1),(9,'2021_01_01_143849_create_informasi_pendaftaran_table',1);
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `password_resets`
---
-
-DROP TABLE IF EXISTS `password_resets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `password_resets`
+-- Dumping data untuk tabel `migrations`
 --
 
-LOCK TABLES `password_resets` WRITE;
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2020_12_26_114653_create_profile_madrasah_table', 1),
+(5, '2020_12_27_175723_create_ekstrakulikuler_table', 1),
+(6, '2020_12_28_062834_create_gurutendik_table', 1),
+(7, '2020_12_28_155258_create_contact_table', 1),
+(8, '2020_12_28_172531_create_berita_table', 1),
+(9, '2021_01_01_143849_create_informasi_pendaftaran_table', 1),
+(11, '2024_11_21_105246_gallery', 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `profile_madrasah`
+-- Struktur dari tabel `password_resets`
 --
 
-DROP TABLE IF EXISTS `profile_madrasah`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profile_madrasah`
+--
+
 CREATE TABLE `profile_madrasah` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nama` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jumlah_rombel` int NOT NULL,
-  `jumlah_siswa` int NOT NULL,
-  `jumlah_guru` int NOT NULL,
-  `jumlah_tendik` int NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(45) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `jumlah_rombel` int(11) NOT NULL,
+  `jumlah_siswa` int(11) NOT NULL,
+  `jumlah_guru` int(11) NOT NULL,
+  `jumlah_tendik` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `profile_madrasah`
+-- Dumping data untuk tabel `profile_madrasah`
 --
 
-LOCK TABLES `profile_madrasah` WRITE;
-/*!40000 ALTER TABLE `profile_madrasah` DISABLE KEYS */;
-INSERT INTO `profile_madrasah` VALUES (2,'harmoni','mantap','https://harmoni.satubangsa.sch.id/assets/img/Harmoni_new_background.jpg','https://harmoni.satubangsa.sch.id/assets/img/satubangsa-logo-vertical.png',2,231,9,12,'2024-11-09 10:41:32','2024-11-09 10:41:32'),(3,'Test School','This is a test description','test.jpg','test_logo.jpg',10,200,20,15,'2024-11-09 08:26:43','2024-11-09 08:26:43');
-/*!40000 ALTER TABLE `profile_madrasah` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `profile_madrasah` (`id`, `nama`, `deskripsi`, `gambar`, `logo`, `jumlah_rombel`, `jumlah_siswa`, `jumlah_guru`, `jumlah_tendik`, `created_at`, `updated_at`) VALUES
+(2, 'Satubangsa Harmoni', 'Sekolah Satu Bangsa Harmoni adalah Lembaga Pendidikan formal yang berada di bawah naungan Yayasan Satubangsa Harmoni Baru. Sekolah ini sebelumnya di kenal dengan nama Sekolah Harmoni dan beralih menjadi Sekolah Satu Bangsa Harmoni. Sekolah Satu Bangsa Harmoni memiliki jenjang pendidikan dari tingkat KB, TK, SD, SMP, dan SMK serta beralamat di Kelurahan Bengkong Laut, Kecamatan Bengkong. Sekolah ini menyediakan pendidikan sesuai dengan visi masing-masing unit sekolah.', 'bg.jpg', 'logo.png', 2, 231, 9, 12, '2024-11-09 10:41:32', '2024-11-09 10:41:32');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'san','san@gmail.com','2024-11-09 12:02:36','123','x','2024-11-09 12:02:36','2024-11-09 12:02:36');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'san', 'san@gmail.com', '2024-11-09 12:02:36', '123', 'x', '2024-11-09 12:02:36', '2024-11-09 12:02:36'),
+(2, '123', '123@123', NULL, '$2y$10$iYhfGYqOQ4DjW.UgLkUo3uA6FtO4TLNnQwIxaHqAUT11wZEWlWrKi', NULL, '2024-11-24 03:08:55', '2024-11-24 03:08:55');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ekstrakulikuler`
+--
+ALTER TABLE `ekstrakulikuler`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `gurutendik`
+--
+ALTER TABLE `gurutendik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `informasi_pendaftaran`
+--
+ALTER TABLE `informasi_pendaftaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `profile_madrasah`
+--
+ALTER TABLE `profile_madrasah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `ekstrakulikuler`
+--
+ALTER TABLE `ekstrakulikuler`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `gurutendik`
+--
+ALTER TABLE `gurutendik`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT untuk tabel `informasi_pendaftaran`
+--
+ALTER TABLE `informasi_pendaftaran`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `profile_madrasah`
+--
+ALTER TABLE `profile_madrasah`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2024-11-11  6:24:57
