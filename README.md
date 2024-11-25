@@ -108,4 +108,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# seekolah
+# Sekolah App
+## Instalation
+1. ganti versi php, copy folder php dan apache di folder pack/apache, pack/php, ke folder xampp kamu
+2. php artisan serve
+3. php artisan migrate
