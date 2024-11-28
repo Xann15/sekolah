@@ -29,18 +29,18 @@ class LeandingPageController extends Controller
 
     public function index_berita()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $contact = Contact::first();
         $berita_terbaru = Berita::orderByRaw('created_at DESC')->paginate(3);
         $berita_all = Berita::orderByRaw('created_at DESC')->get();
-        return view('berita.index_berita', compact('berita_terbaru', 'berita_all', 'contact', 'madrasah'));
+        return view('berita.index_berita', compact('berita_terbaru', 'berita_all', 'contact', 'profile_madrasah'));
     }
 
     public function show_berita($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $contact = Contact::first();
         $berita = Berita::find($id);
-        return view('berita.show_berita', compact('berita', 'madrasah', 'contact'));
+        return view('berita.show_berita', compact('berita', 'profile_madrasah', 'contact'));
     }
 }

@@ -19,9 +19,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $contact = Contact::orderByRaw('created_at DESC')->paginate(1);
-        return view('contact.index', compact('contact', 'madrasah'));
+        return view('contact.index', compact('contact', 'profile_madrasah'));
     }
 
     /**
@@ -31,8 +31,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('contact.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('contact.create', compact('profile_madrasah'));
     }
 
     /**
@@ -51,7 +51,7 @@ class ContactController extends Controller
         $contact->facebook   = $request->input('facebook');
         $contact->twitter   = $request->input('twitter');
         $contact->save();
-        return redirect()->route('contact.index')->with("success", "Data berhasil disimpan");
+        return redirect()->route('admin/contact.index')->with("success", "Data berhasil disimpan");
     }
 
     /**
@@ -73,9 +73,9 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $contact = Contact::find($id);
-        return view('contact.edit', compact('contact','madrasah'));
+        return view('contact.edit', compact('contact', 'profile_madrasah'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ContactController extends Controller
     {
         $contact = Contact::findorfail($id);
         $contact->update($request->all());
-        return redirect('contact')->with('success', 'Edit data sukses');
+        return redirect('admin/contact')->with('success', 'Edit data sukses');
     }
 
     /**

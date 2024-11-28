@@ -19,9 +19,9 @@ class EkstrakulikulerController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $ekstrakulikuler = Ekstrakulikuler::orderByRaw('created_at DESC')->get();
-        return view('ekstrakulikuler.index', compact('ekstrakulikuler','madrasah'));
+        return view('ekstrakulikuler.index', compact('ekstrakulikuler', 'profile_madrasah'));
     }
 
     /**
@@ -31,8 +31,8 @@ class EkstrakulikulerController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('ekstrakulikuler.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('ekstrakulikuler.create', compact('profile_madrasah'));
     }
 
     /**
@@ -73,9 +73,9 @@ class EkstrakulikulerController extends Controller
      */
     public function edit($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $ekstrakulikuler = Ekstrakulikuler::find($id);
-        return view('ekstrakulikuler.edit', compact('ekstrakulikuler','madrasah'));
+        return view('ekstrakulikuler.edit', compact('ekstrakulikuler', 'profile_madrasah'));
     }
 
     /**
@@ -95,7 +95,7 @@ class EkstrakulikulerController extends Controller
             $ekstrakulikuler->foto = 'Eks-' . $request->file('foto')->getClientOriginalName();
             $ekstrakulikuler->save();
         }
-        return redirect('ekstrakulikuler')->with('success', 'Edit data sukses');
+        return redirect('admin/ekstrakulikuler')->with('success', 'Edit data sukses');
     }
 
     /**
@@ -109,7 +109,7 @@ class EkstrakulikulerController extends Controller
         try {
             $ekstrakulikuler = Ekstrakulikuler::find($id);
             $ekstrakulikuler->delete();
-            return redirect('ekstrakulikuler')->with('success', 'Hapus data sukses');
+            return redirect('admin/ekstrakulikuler')->with('success', 'Hapus data sukses');
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('warning', 'Maaf data  tidak dapat dihapus');
         }

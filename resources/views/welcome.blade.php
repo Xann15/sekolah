@@ -38,7 +38,7 @@
 <body>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center">
 
             <a class="navbar-brand mr-auto" href="#">
                 <img src="{{ URL::to('/') }}/logo_madrasah/{{ $profile_madrasah->logo }}" width="30" height="30"
@@ -48,11 +48,24 @@
 
             <nav class="nav-menu d-none d-lg-block fw-bold">
                 <ul>
-                    <li class="active"><a href="#hero">BERANDA</a></li>
-                    <li><a href="">PROGRAM STUDI & JURUSAN</a></li>
-                    <li><a href="">SARANA & PRASARANA</a></li>
-                    <li><a href="">GALERI</a></li>
-                    <li><a href="/home/berita">BERITA</a></li>
+                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">BERANDA</a></li>
+                    <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about">TENTANG KAMI</a></li>
+                    <li class="{{ Request::is('program-studi-dan-jurusan') ? 'active' : '' }}">
+                        <a href="/program-studi-dan-jurusan">PROGRAM STUDI & JURUSAN</a>
+                    </li>
+                    <li
+                        class="drop-down {{ Request::is('fasilitas') || Request::is('ekstrakulikuler') ? 'active' : '' }}">
+                        <a href="#">SARANA & PRASARANA</a>
+                        <ul>
+                            <li><a class="dropdown-item {{ Request::is('fasilitas') ? 'active' : '' }}"
+                                    href="/fasilitas">Fasilitas</a></li>
+                            <li><a class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}"
+                                    href="/ekstrakulikuler">Ekstrakulikuler</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{ Request::is('galeri') ? 'active' : '' }}"><a href="/galeri">GALERI</a></li>
+                    <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
+
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
                         <ul>
                             <li><a href="#profile_sekolah">Profile Sekolah</a></li>
@@ -68,7 +81,10 @@
                             @endif
                         </ul>
                     </li> --}}
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li class="p-2 d-flex ml-lg-3 rounded" style="cursor: pointer; background-color: #CE1617"
+                        onclick="window.location.href='/login'">
+                        <div class="text-white m-auto h-100" style="font-size: 15px">Login</div>
+                    </li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -85,7 +101,8 @@
                     <h1>SMK Satubangsa Harmoni Batam</h1>
 
                     @if ($informasi_pendaftaran->status == 1)
-                        <h2>Terwujudnya {{ $profile_madrasah->nama }} yang Manis dengan Lulusan yang Mandiri, dengan proses belajar Aktif, kreatif dan inovatif</h2>
+                        <h2>Terwujudnya {{ $profile_madrasah->nama }} yang Manis dengan Lulusan yang Mandiri, dengan
+                            proses belajar Aktif, kreatif dan inovatif</h2>
                         <div class="d-flex">
                             <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
                             <a href="#informasi_pendaftaran" class="btn-watch-video scrollto">Informasi Pendaftaran <i
@@ -108,95 +125,133 @@
         </div>
 
     </section><!-- End Hero -->
-    
-        <!-- ======= Profile Madrasah Section ======= -->
-        <section id="profile_sekolah" class="about">
-            <div class="container">
 
-                <div class="row">
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-duration="800">
-                        <img src="{{ URL::to('/') }}/gambar_profile/{{ $profile_madrasah->gambar }}"
-                            class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-delay="500">
-                        <h3>Profil Sekolah</h3>
-                        <p>
-                            {{ $profile_madrasah->deskripsi }}
-                        </p>
-                    </div>
+    <!-- KataSambutan Kepsek -->
+    <section id="katasambutan_kepsek" class="about my-5">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-3" data-aos="fade-up" data-aos-duration="800">
+                    <img src="{{ URL::to('/') }}/assets/img/kepsek.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-9 pt-4 pt-lg-0 content my-auto" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="500">
+                    <h3>Kata Sambutan Kepala Sekolah</h3>
+                    <p>
+                        Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Kuasa atas berkat dan karunia-Nya sehingga
+                        {{ $profile_madrasah->nama }} Batam berhasil menyelesaikan pembuatan website ini. Kehadiran
+                        website ini diharapkan
+                        dapat mempermudah dan memperlancar arus informasi mengenai sekolah kepada semua pihak yang
+                        terkait, termasuk orang tua, alumni, dan masyarakat umum.
+
+                        Dengan hadirnya website ini, kami berharap dapat memberikan informasi terkini tentang
+                        perkembangan dunia pendidikan di {{ $profile_madrasah->nama }} Batam. Semoga website ini dapat
+                        menjadi media yang
+                        bermanfaat bagi semua pihak.
+
+                        “Jangan pernah berhenti belajar karena hidup tidak pernah berhenti mengajarkan.”
+
+                        Terima kasih atas kerja sama dan dukungan yang diberikan untuk kemajuan pendidikan di sekolah
+                        ini. Semoga kita selalu dalam lindungan Tuhan.
+
+                        Sekian dan terima kasih.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End KataSambutan Kepsek -->
+
+    <!-- ======= Profile Madrasah Section ======= -->
+    <section id="profile_sekolah" class="about">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-duration="800">
+                    <img src="{{ URL::to('/') }}/gambar_profile/{{ $profile_madrasah->gambar }}" class="img-fluid"
+                        alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="500">
+                    <h3>Profil Sekolah</h3>
+                    <p>
+                        {{ $profile_madrasah->deskripsi }}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Profile Madrasah Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+
+            <div class="row counters mt-5">
+                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="0">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_rombel }}</span>
+                    <p>Rombongan Belajar</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="100">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_siswa }}</span>
+                    <p>Siswa</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="200">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_guru }}</span>
+                    <p>Guru</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
+                    data-aos-delay="300">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_tendik }}</span>
+                    <p>Tenaga Kependidikan</p>
                 </div>
 
             </div>
-        </section><!-- End Profile Madrasah Section -->
 
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts">
+        </div>
+    </section><!-- End Counts Section -->
+
+    <main id="main">
+        <!-- ======= Berita Section ======= -->
+        <section id="berita" class="testimonials section-bg">
             <div class="container">
 
-                <div class="row counters mt-5">
-                    <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-delay="0">
-                        <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_rombel }}</span>
-                        <p>Rombongan Belajar</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-delay="100">
-                        <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_siswa }}</span>
-                        <p>Siswa</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-delay="200">
-                        <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_guru }}</span>
-                        <p>Guru</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-delay="300">
-                        <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_tendik }}</span>
-                        <p>Tenaga Kependidikan</p>
-                    </div>
-
+                <div class="section-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                    <span>Berita Terbaru</span>
+                    <h2>Berita Terbaru</h2>
+                    <p><a href="/berita" target="_blank">Lihat semua berita....</a></p>
                 </div>
 
-            </div>
-        </section><!-- End Counts Section -->
-
-        <main id="main">
-            <!-- ======= Berita Section ======= -->
-            <section id="berita" class="testimonials section-bg">
-                <div class="container">
-    
-                    <div class="section-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                        <span>Berita Terbaru</span>
-                        <h2>Berita Terbaru</h2>
-                        <p><a href="/home/berita" target="_blank">Lihat semua berita....</a></p>
-                    </div>
-    
-                    <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-duration="800">
-                        @foreach ($berita_terbaru as $berita)
-                            <div class="panel panel-default px-2">
-                                <div class="panel-heading post-thumb">
-                                    <img src="{{ URL::to('/') }}/foto_berita/{{ $berita->foto }}" class="testimonial-img"
-                                        alt="">
-                                </div>
-                                <div class="panel-body post-body-berita">
-                                    <h5><b>{{ $berita->judul }}</b></h5>
-                                    <h6>{{ $berita->penulis }} - {{ $berita->created_at->diffForHumans() }}</h6>
-                                    <a href="/home/berita/{{ $berita->id     }}" target="_blank">Baca selengkapnya</a>
-                                    <p>
-                                        {!! substr($berita->deskripsi, 0, 220) !!}.....
-                                    </p>
-                                </div>
+                <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-duration="800">
+                    @foreach ($berita_terbaru as $berita)
+                        <div class="panel panel-default px-2">
+                            <div class="panel-heading post-thumb">
+                                <img src="{{ URL::to('/') }}/foto_berita/{{ $berita->foto }}"
+                                    class="testimonial-img" alt="">
                             </div>
-                        @endforeach
-                    </div>
-    
+                            <div class="panel-body post-body-berita">
+                                <h5><b>{{ $berita->judul }}</b></h5>
+                                <h6>{{ $berita->penulis }} - {{ $berita->created_at->diffForHumans() }}</h6>
+                                <a href="/berita/{{ $berita->id }}" target="_blank">Baca selengkapnya</a>
+                                <p>
+                                    {!! substr($berita->deskripsi, 0, 220) !!}.....
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </section>
-            <!-- End Berita Section -->     
+
+            </div>
+        </section>
+        <!-- End Berita Section -->
 
         <!-- ======= Services Section ======= -->
         {{-- <section id="ekstrakulikuler" class="services section-bg">
@@ -228,7 +283,7 @@
 
             </div>
         </section> --}}
-        <!-- End Services Section -->   
+        <!-- End Services Section -->
 
         <!-- ======= Team Section ======= -->
         {{-- <section id="gtk" class="team section-bg">
@@ -271,7 +326,7 @@
                         {!! $informasi_pendaftaran->deskripsi !!}
 
                         @if ($informasi_pendaftaran->status == 1)
-                            <a href="/register" class="btn btn-danger" target="_blank" disabled data-aos="zoom-in"
+                            <a href="/register" class="btn btn-success" target="_blank" disabled data-aos="zoom-in"
                                 data-aos-duration="800" data-aos-delay="800">Daftar Sekarang</a>
                         @else
                             <a class="btn btn-danger disabled" aria-disabled="true" data-aos="zoom-in"
@@ -355,7 +410,7 @@
     <footer id="footer">
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                {{ $profile_madrasah->nama }} | <strong><span>2024</span></strong>. All Rights Reserved
+                {{ $profile_madrasah->nama }} | <strong><span>2025</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->

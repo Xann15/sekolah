@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User; // Pastikan untuk mengimpor model User dengan benar
+use App\ProfileMadrasah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +13,16 @@ class AuthController extends Controller
     // Menampilkan halaman login
     public function login()
     {
-        return view('auth.login');
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('auth.login', compact('profile_madrasah'));
     }
 
     // Menampilkan halaman register
     public function register()
     {
-        return view('auth.register');
+        $profile_madrasah = ProfileMadrasah::first();
+
+        return view('auth.register', compact('profile_madrasah'));
     }
 
     // Proses autentikasi saat login
@@ -32,8 +36,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Mengarahkan ke halaman yang dimaksud setelah login sukses
-            return redirect()->intended('/'); 
+            return redirect('/home');
         }
 
         return back()->withErrors([

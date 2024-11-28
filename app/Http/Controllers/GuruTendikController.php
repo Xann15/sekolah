@@ -19,9 +19,9 @@ class GuruTendikController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $gurutendik = GuruTendik::all();
-        return view('gurutendik.index', compact('gurutendik','madrasah'));
+        return view('gurutendik.index', compact('gurutendik', 'profile_madrasah'));
     }
 
     /**
@@ -31,8 +31,8 @@ class GuruTendikController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('gurutendik.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('gurutendik.create', compact('profile_madrasah'));
     }
 
     /**
@@ -46,10 +46,6 @@ class GuruTendikController extends Controller
         $gurutendik = new GuruTendik();
         $gurutendik->nama   = $request->input('nama');
         $gurutendik->jabatan   = $request->input('jabatan');
-        $gurutendik->motto   = $request->input('motto');
-        $gurutendik->facebook   = $request->input('facebook');
-        $gurutendik->instagram   = $request->input('instagram');
-        $gurutendik->twitter   = $request->input('twitter');
         $image                   = $request->file('foto');
         $imageName   = 'GTK-' . $image->getClientOriginalName();
         $image->move('foto_gurutendik/', $imageName);
@@ -77,9 +73,9 @@ class GuruTendikController extends Controller
      */
     public function edit($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $gurutendik = GuruTendik::find($id);
-        return view('gurutendik.edit', compact('gurutendik','madrasah'));
+        return view('gurutendik.edit', compact('gurutendik', 'profile_madrasah'));
     }
 
     /**
@@ -99,7 +95,7 @@ class GuruTendikController extends Controller
             $gurutendik->foto = 'GTK-' . $request->file('foto')->getClientOriginalName();
             $gurutendik->save();
         }
-        return redirect('gurutendik')->with('success', 'Edit data sukses');
+        return redirect('admin/gurutendik')->with('success', 'Edit data sukses');
     }
 
     /**
@@ -113,7 +109,7 @@ class GuruTendikController extends Controller
         try {
             $gurutendik = GuruTendik::find($id);
             $gurutendik->delete();
-            return redirect('gurutendik')->with('success', 'Hapus data sukses');
+            return redirect('admin/gurutendik')->with('success', 'Hapus data sukses');
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('warning', 'Maaf data  tidak dapat dihapus');
         }

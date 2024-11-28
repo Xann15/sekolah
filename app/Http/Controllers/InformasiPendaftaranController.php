@@ -19,9 +19,9 @@ class InformasiPendaftaranController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $informasi_pendaftaran = InformasiPendaftaran::orderByRaw('created_at DESC')->paginate(1);
-        return view('informasipendaftaran.index', compact('informasi_pendaftaran','madrasah'));
+        return view('informasipendaftaran.index', compact('informasi_pendaftaran', 'profile_madrasah'));
     }
 
     /**
@@ -31,8 +31,8 @@ class InformasiPendaftaranController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('informasipendaftaran.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('informasipendaftaran.create', compact('profile_madrasah'));
     }
 
     /**
@@ -51,7 +51,7 @@ class InformasiPendaftaranController extends Controller
         $filegambar->move('gambar_pendaftaran/', $filegambarName);
         $informasi_pendaftaran->gambar  = $filegambarName;
         $informasi_pendaftaran->save();
-        return redirect()->route('informasipendaftaran.index')->with("success", "Data berhasil disimpan");
+        return redirect()->route('admin/informasipendaftaran.index')->with("success", "Data berhasil disimpan");
     }
 
     /**
@@ -73,9 +73,9 @@ class InformasiPendaftaranController extends Controller
      */
     public function edit($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $informasi_pendaftaran = InformasiPendaftaran::find($id);
-        return view('informasipendaftaran.edit', compact('informasi_pendaftaran','madrasah'));
+        return view('informasipendaftaran.edit', compact('informasi_pendaftaran', 'profile_madrasah'));
     }
 
     /**
@@ -95,7 +95,7 @@ class InformasiPendaftaranController extends Controller
             $informasi_pendaftaran->gambar = 'GPendaf-' . $request->file('gambar')->getClientOriginalName();
             $informasi_pendaftaran->save();
         }
-        return redirect('informasipendaftaran')->with('success', 'Edit data sukses');
+        return redirect('admin/informasipendaftaran')->with('success', 'Edit data sukses');
     }
 
     /**

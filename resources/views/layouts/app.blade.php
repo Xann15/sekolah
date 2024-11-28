@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{$madrasah->nama}} | Admin</title>
+    <title>{{ $profile_madrasah->nama }} | Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -14,7 +14,9 @@
     <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,8 +39,9 @@
         <div class="container d-flex align-items-center">
 
             <a class="navbar-brand mr-auto" href="#">
-                <img src="{{URL::to('/')}}/logo_madrasah/{{$madrasah->logo}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-                {{$madrasah->nama}}
+                <img src="{{ URL::to('/') }}/logo_madrasah/{{ $profile_madrasah->logo }}" width="30" height="30"
+                    class="d-inline-block align-top" alt="" loading="lazy">
+                {{ $profile_madrasah->nama }}
             </a>
 
             <nav class="nav-menu d-none d-lg-block">
@@ -46,16 +49,19 @@
                     <li><a href="{{ route('home') }}">Dashboard</a></li>
                     <li class="drop-down"><a href="#">Data Master</a>
                         <ul>
-                            <li><a class="dropdown-item" href="{{ route('profilemadrasah.index') }}">Profile Madrasah</a></li>
-                            <li><a class="dropdown-item" href="{{ route('ekstrakulikuler.index') }}">Ekstrakulikuler</a></li>
-                            <li><a class="dropdown-item" href="{{ route('gurutendik.index') }}">Guru & Tenaga Kependidikan</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profilemadrasah.index') }}">Profile
+                                    Sekolah</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ekstrakulikuler.index') }}">Ekstrakulikuler</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('gurutendik.index') }}">Guru & Tenaga
+                                    Kependidikan</a></li>
                             <li><a class="dropdown-item" href="{{ route('contact.index') }}">Contact</a></li>
                         </ul>
                     </li>
                     <li class="drop-down"><a href="">Data PPDB Online</a>
                         <ul>
-                            <li><a class="dropdown-item" href="{{ route('informasipendaftaran.index') }}">Informasi Pendaftaran</a></li>
-                            <li><a href="/register" target="_blank">Data Pendaftar</a></li>
+                            <li><a class="dropdown-item" href="{{ route('informasipendaftaran.index') }}">Informasi
+                                    Pendaftaran</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('berita.index') }}">Data Berita</a></li>
@@ -63,11 +69,13 @@
                         <ul>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                     Keluar</a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
                                     @csrf
                                 </form>
                             </li>
@@ -90,14 +98,14 @@
     <footer id="footer">
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                {{$madrasah->nama}} | <strong><span>2020</span></strong>. All Rights Reserved
+                {{ $profile_madrasah->nama }} | <strong><span>2025</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a>
             </div>
         </div>
     </footer><!-- End Footer -->

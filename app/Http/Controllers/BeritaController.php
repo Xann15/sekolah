@@ -19,9 +19,9 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $berita = Berita::orderByRaw('created_at DESC')->get();
-        return view('berita.index', compact('berita', 'madrasah'));
+        return view('berita.index', compact('berita', 'profile_madrasah'));
     }
 
     /**
@@ -31,8 +31,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('berita.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('berita.create', compact('profile_madrasah'));
     }
 
     /**
@@ -63,9 +63,9 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $berita = Berita::find($id);
-        return view('berita.show', compact('berita', 'madrasah'));
+        return view('berita.show', compact('berita', 'profile_madrasah'));
     }
 
     /**
@@ -76,9 +76,9 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        $madrasah = ProfileMadrasah::first();
+        $profile_madrasah = ProfileMadrasah::first();
         $berita = Berita::find($id);
-        return view('berita.edit', compact('berita','madrasah'));
+        return view('berita.edit', compact('berita', 'profile_madrasah'));
     }
 
     /**
@@ -98,7 +98,7 @@ class BeritaController extends Controller
             $berita->foto = 'FB-' . $request->file('foto')->getClientOriginalName();
             $berita->save();
         }
-        return redirect('berita')->with('success', 'Edit data sukses');
+        return redirect('admin/berita')->with('success', 'Edit data sukses');
     }
 
     /**
@@ -112,7 +112,7 @@ class BeritaController extends Controller
         try {
             $berita = Berita::find($id);
             $berita->delete();
-            return redirect('berita')->with('success', 'Hapus data sukses');
+            return redirect('admin/berita')->with('success', 'Hapus data sukses');
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('warning', 'Maaf data  tidak dapat dihapus');
         }

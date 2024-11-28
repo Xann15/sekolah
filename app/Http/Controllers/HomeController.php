@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('home', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('home', compact('profile_madrasah'));
     }
 }

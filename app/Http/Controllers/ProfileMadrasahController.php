@@ -18,9 +18,8 @@ class ProfileMadrasahController extends Controller
      */
     public function index()
     {
-        $madrasah = ProfileMadrasah::first();
-        $profile_madrasah = ProfileMadrasah::orderByRaw('created_at DESC')->paginate(1);
-        return view('profilemadrasah.index', compact('profile_madrasah', 'madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('profilemadrasah.index', compact('profile_madrasah'));
     }
 
     /**
@@ -30,8 +29,8 @@ class ProfileMadrasahController extends Controller
      */
     public function create()
     {
-        $madrasah = ProfileMadrasah::first();
-        return view('profilemadrasah.create', compact('madrasah'));
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('profilemadrasah.create', compact('profile_madrasah'));
     }
 
     /**
@@ -58,7 +57,7 @@ class ProfileMadrasahController extends Controller
         $filelogo->move('logo_madrasah/', $filelogoName);
         $profile_madrasah->logo  = $filelogoName;
         $profile_madrasah->save();
-        return redirect()->route('profilemadrasah.index')->with("success", "Data berhasil disimpan");
+        return redirect()->route('admin/profilemadrasah.index')->with("success", "Data berhasil disimpan");
     }
 
     /**
@@ -107,7 +106,7 @@ class ProfileMadrasahController extends Controller
             $profile_madrasah->logo = 'LP-' . $request->file('logo')->getClientOriginalName();
             $profile_madrasah->save();
         }
-        return redirect('profilemadrasah')->with('success', 'Edit data sukses');
+        return redirect('admin/profilemadrasah')->with('success', 'Edit data sukses');
     }
 
     /**
