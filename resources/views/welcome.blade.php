@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $profile_madrasah->nama }} | Leanding Page</title>
+    <title>{{ $profile_madrasah->nama }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -63,7 +63,7 @@
                                     href="/ekstrakulikuler">Ekstrakulikuler</a></li>
                         </ul>
                     </li>
-                    <li class="{{ Request::is('galeri') ? 'active' : '' }}"><a href="/galeri">GALERI</a></li>
+                    <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/gallery">GALERI</a></li>
                     <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
@@ -81,10 +81,6 @@
                             @endif
                         </ul>
                     </li> --}}
-                    <li class="p-2 d-flex ml-lg-3 rounded" style="cursor: pointer; background-color: #CE1617"
-                        onclick="window.location.href='/login'">
-                        <div class="text-white m-auto h-100" style="font-size: 15px">Login</div>
-                    </li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -98,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1>SMK Satubangsa Harmoni Batam</h1>
+                    <h1>{{ $profile_madrasah->nama }} Batam</h1>
 
                     @if ($informasi_pendaftaran->status == 1)
                         <h2>Terwujudnya {{ $profile_madrasah->nama }} yang Manis dengan Lulusan yang Mandiri, dengan
@@ -132,13 +128,15 @@
 
             <div class="row">
                 <div class="col-lg-3" data-aos="fade-up" data-aos-duration="800">
-                    <img src="{{ URL::to('/') }}/assets/img/kepsek.jpg" class="img-fluid" alt="">
+                    <img src="{{ URL::to('/') }}/foto_sambutankepsek/{{ $katasambutan_kepsek->foto }}"
+                        class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-9 pt-4 pt-lg-0 content my-auto" data-aos="fade-up" data-aos-duration="800"
                     data-aos-delay="500">
                     <h3>Kata Sambutan Kepala Sekolah</h3>
                     <p>
-                        Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Kuasa atas berkat dan karunia-Nya sehingga
+                        {{ $katasambutan_kepsek->nama }}: Puji syukur kami panjatkan ke hadirat Tuhan Yang Maha Kuasa
+                        atas berkat dan karunia-Nya sehingga
                         {{ $profile_madrasah->nama }} Batam berhasil menyelesaikan pembuatan website ini. Kehadiran
                         website ini diharapkan
                         dapat mempermudah dan memperlancar arus informasi mengenai sekolah kepada semua pihak yang
@@ -417,7 +415,8 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-                Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a>
+                {{-- Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a> --}}
+                <a href="/login">Login as Admin</a>
             </div>
         </div>
     </footer><!-- End Footer -->

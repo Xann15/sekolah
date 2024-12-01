@@ -1,6 +1,8 @@
 <?php
 
+use App\About;
 use App\Contact;
+use App\Fasilitas;
 use App\GuruTendik;
 use App\Ekstrakulikuler;
 use App\ProfileMadrasah;
@@ -44,7 +46,7 @@ Route::get('/berita', 'LeandingPageController@index_berita');
 
 // Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'HomeController@index')->name('home');
 Route::resource('/admin/profilemadrasah', 'ProfileMadrasahController');
 Route::resource('/admin/ekstrakulikuler', 'EkstrakulikulerController');
 Route::get('/admin/ekstrakulikuler/{id}/destroy', 'EkstrakulikulerController@destroy');
@@ -54,29 +56,38 @@ Route::resource('/admin/contact', 'ContactController');
 Route::resource('/admin/berita', 'BeritaController');
 Route::get('/admin/berita/{id}/destroy', 'BeritaController@destroy');
 Route::resource('/admin/informasipendaftaran', 'InformasiPendaftaranController');
+Route::resource('/admin/katasambutankepsek', 'KataSambutanKepsekController');
+Route::resource('/admin/about', 'AboutController');
+Route::resource('/admin/visimisi', 'VisiMisiController');
 
 
 Route::get('/about', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $gurutendik = GuruTendik::all();
     $contact = Contact::first();
-    return view('page.about.index', compact('profile_madrasah', 'contact', 'gurutendik'));
+    $about = About::first();
+    return view('page.about.index', compact('profile_madrasah', 'contact', 'gurutendik', 'about'));
 });
 Route::get('/program-studi-dan-jurusan', function () {
     $profile_madrasah = ProfileMadrasah::first();
-    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah'));
+    $contact = Contact::first();
+    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah', 'contact'));
 });
 Route::get('/fasilitas', function () {
     $profile_madrasah = ProfileMadrasah::first();
-    return view('page.fasilitas.index', compact('profile_madrasah'));
+    $fasilitas = Fasilitas::all();
+    $contact = Contact::first();
+    return view('page.fasilitas.index', compact('profile_madrasah', 'fasilitas', 'contact'));
 });
 Route::get('/ekstrakulikuler', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $ekstrakulikuler = Ekstrakulikuler::orderByRaw('created_at DESC')->get();
-    return view('page.ekskul.index', compact('profile_madrasah', 'ekstrakulikuler'));
+    $contact = Contact::first();
+    return view('page.ekstrakulikuler.index', compact('profile_madrasah', 'ekstrakulikuler', 'contact'));
 });
 Route::get('/gallery', function () {
     $profile_madrasah = ProfileMadrasah::first();
     // $gallery = Gallery::orderByRaw('created_at DESC')->get();
-    return view('page.gallery.index', compact('profile_madrasah'));
+    $contact = Contact::first();
+    return view('page.gallery.index', compact('profile_madrasah', 'contact'));
 });

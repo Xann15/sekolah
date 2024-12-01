@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $profile_madrasah->nama }} | Admin</title>
+    <title>{{ $profile_madrasah->nama }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -26,13 +26,49 @@
     <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
-    <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    {{-- <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet"> --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel/dist/assets/owl.theme.default.min.css">
+
 
     <!-- Summernote -->
     <link href="/assets/summernote/summernote.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <style>
+        .owl-carousel .owl-dots,
+        .owl-carousel .owl-nav {
+            text-align: center;
+            /* Center the dots horizontally */
+            margin-top: 15px;
+            /* Add some space between the carousel and the dots */
+        }
+
+        .owl-carousel .owl-nav {
+            font-size: 25px;
+        }
+
+        .owl-carousel .owl-dots .owl-dot {
+            display: inline-block;
+            width: 12px;
+            /* Adjust the size of the dots */
+            height: 12px;
+            margin: 0 5px;
+            /* Space between the dots */
+            background-color: #ccc;
+            /* Default color for the dots */
+            border-radius: 50%;
+            /* Make the dots round */
+            transition: background-color 0.3s ease;
+        }
+
+        .owl-carousel .owl-dots .owl-dot.active {
+            background-color: #CE1617;
+            /* Active dot color */
+        }
+    </style>
 </head>
 
 <body>
@@ -58,13 +94,13 @@
                         class="drop-down {{ Request::is('fasilitas') || Request::is('ekstrakulikuler') ? 'active' : '' }}">
                         <a href="#">SARANA & PRASARANA</a>
                         <ul>
-                            <li><a class="dropdown-item {{ Request::is('fasilitas') ? 'active' : '' }}"
+                            <li><a class="dropdown-item {{ Request::is('fasilitas') ? 'active text-white' : '' }}"
                                     href="/fasilitas">Fasilitas</a></li>
-                            <li><a class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active' : '' }}"
+                            <li><a class="dropdown-item {{ Request::is('ekstrakulikuler') ? 'active text-white' : '' }}"
                                     href="/ekstrakulikuler">Ekstrakulikuler</a></li>
                         </ul>
                     </li>
-                    <li class="{{ Request::is('galeri') ? 'active' : '' }}"><a href="/galeri">GALERI</a></li>
+                    <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/gallery">GALERI</a></li>
                     <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
@@ -82,10 +118,7 @@
                         @endif
                     </ul>
                 </li> --}}
-                    <li class="p-2 d-flex ml-lg-3 rounded" style="cursor: pointer; background-color: #CE1617"
-                        onclick="window.location.href='/login'">
-                        <div class="text-white m-auto h-100" style="font-size: 15px">Login</div>
-                    </li>
+
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -175,7 +208,8 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-                Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a>
+                {{-- Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a> --}}
+                <a href="/login">Login as Admin</a>
             </div>
         </div>
     </footer><!-- End Footer -->
@@ -191,7 +225,10 @@
     <script src="/assets/vendor/counterup/counterup.min.js"></script>
     <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/assets/vendor/venobox/venobox.min.js"></script>
-    <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    {{-- <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel/dist/owl.carousel.min.js"></script>
+
 
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
@@ -208,6 +245,29 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 6, // Show 6 items per view
+            margin: 20, // Space between items
+            loop: true, // Enable looping
+            nav: true, // Show next/prev arrows
+            dots: true, // Show dots for navigation
+            autoplay: true, // Enable autoplay
+            autoplayTimeout: 3000, // Set autoplay time (3000ms = 3 seconds)
+            autoplayHoverPause: true, // Pause autoplay on hover
+            responsive: {
+                0: {
+                    items: 2, // For small screens, show 1 item
+                },
+                768: {
+                    items: 4, // For medium screens, show 3 items
+                },
+                1024: {
+                    items: 6, // For larger screens, show 6 items
+                }
+            }
+        });
     </script>
 
 </body>

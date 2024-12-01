@@ -95,7 +95,7 @@ class InformasiPendaftaranController extends Controller
             $informasi_pendaftaran->gambar = 'GPendaf-' . $request->file('gambar')->getClientOriginalName();
             $informasi_pendaftaran->save();
         }
-        return redirect('admin/informasipendaftaran')->with('success', 'Edit data sukses');
+        return redirect('admin/home')->with('success', 'Edit data sukses');
     }
 
     /**

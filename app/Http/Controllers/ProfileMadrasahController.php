@@ -106,7 +106,7 @@ class ProfileMadrasahController extends Controller
             $profile_madrasah->logo = 'LP-' . $request->file('logo')->getClientOriginalName();
             $profile_madrasah->save();
         }
-        return redirect('admin/profilemadrasah')->with('success', 'Edit data sukses');
+        return redirect('admin/home')->with('success', 'Edit data sukses');
     }
 
     /**

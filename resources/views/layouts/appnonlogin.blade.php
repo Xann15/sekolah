@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $profile_madrasah->nama }} | Admin</title>
+    <title>{{ $profile_madrasah->nama }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -61,7 +61,7 @@
                                     href="/ekstrakulikuler">Ekstrakulikuler</a></li>
                         </ul>
                     </li>
-                    <li class="{{ Request::is('galeri') ? 'active' : '' }}"><a href="/galeri">GALERI</a></li>
+                    <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/gallery">GALERI</a></li>
                     <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
@@ -79,10 +79,6 @@
                         @endif
                     </ul>
                 </li> --}}
-                    <li class="p-2 d-flex ml-lg-3 rounded" style="cursor: pointer; background-color: #CE1617"
-                        onclick="window.location.href='/login'">
-                        <div class="text-white m-auto h-100" style="font-size: 15px">Login</div>
-                    </li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -172,7 +168,8 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-                Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a>
+                {{-- Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a> --}}
+                <a href="/login">Login as Admin</a>
             </div>
         </div>
     </footer><!-- End Footer -->

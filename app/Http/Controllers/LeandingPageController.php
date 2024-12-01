@@ -11,6 +11,7 @@ use App\Ekstrakulikuler;
 use App\ProfileMadrasah;
 use Illuminate\Http\Request;
 use App\InformasiPendaftaran;
+use App\KataSambutanKepsek;
 
 class LeandingPageController extends Controller
 {
@@ -24,7 +25,8 @@ class LeandingPageController extends Controller
         $contact = Contact::first() ?? new Contact;
         $berita_terbaru = Berita::orderByRaw('created_at DESC')->paginate(6);
         $informasi_pendaftaran = InformasiPendaftaran::first() ?? new InformasiPendaftaran;
-        return view('welcome', compact('profile_madrasah', 'ekstrakulikuler', 'gurutendik', 'contact', 'berita_terbaru', 'informasi_pendaftaran'));
+        $katasambutan_kepsek = KataSambutanKepsek::first();
+        return view('welcome', compact('profile_madrasah', 'ekstrakulikuler', 'gurutendik', 'contact', 'berita_terbaru', 'informasi_pendaftaran', 'katasambutan_kepsek'));
     }
 
     public function index_berita()
