@@ -115,6 +115,8 @@
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
                 {{-- Developer by <a href="https://instagram.com/panjialdno">Pandjie Aldino</a> --}}
                 <a href="">Hi Admin!</a>
+                <a href="{{ '/logout' }}">Logout</a>
+
             </div>
         </div>
     </footer><!-- End Footer -->
