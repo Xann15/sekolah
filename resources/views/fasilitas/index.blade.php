@@ -1,4 +1,4 @@
-@extends('layouts.pageapp')
+@extends('layouts.app')
 
 @section('content')
     <section id="program-studi-dan-jurusan">
@@ -8,6 +8,9 @@
         </div>
 
         <section id="fasilitas" class="services section-bg">
+            <div class="text-center pb-4" data-aos="fade-up" data-aos-duration="800"><a href="{{ route('fasilitas.create') }}"
+                    class="btn btn-md btn-success">Tambah
+                    Data Fasilitas</a></div>
             <div class="container">
 
                 <div class="row" data-aos="fade-up">
@@ -20,6 +23,12 @@
                                 <div class="container mt-2">
                                     <h4><a href="">{{ $data_fasilitas->nama }}</a></h4>
                                     <p>{{ $data_fasilitas->deskripsi }}</p>
+                                </div>
+                                <div class="text-center pb-4">
+                                    <a href="{{ route('fasilitas.edit', $data_fasilitas->id) }}"
+                                        class="btn btn-md btn-primary">Edit</a>
+                                    <a href="/admin/fasilitas/{{ $data_fasilitas->id }}/destroy"
+                                        onclick="return confirm('Hapus Data ?')" class="btn btn-md btn-danger">Hapus</a>
                                 </div>
                             </div>
                         </div>

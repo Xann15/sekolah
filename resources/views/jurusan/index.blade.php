@@ -18,8 +18,8 @@
 
     <section id="jurusan" class="about pt-3">
         <!-- About Section -->
-        <div class="text-center"><a href="{{ route('program-studi-dan-jurusan.create') }}"
-                class="btn btn-md btn-success mb-3">Tambah Data
+        <div class="text-center"><a href="{{ route('program-studi-dan-jurusan.create') }}" data-aos="fade-up"
+                data-aos-duration="800" class="btn btn-md btn-success mb-3">Tambah Data
                 Jurusan</a>
         </div>
         <div class="container">

@@ -38,6 +38,37 @@
             color: white;
         }
 
+        .owl-carousel .owl-dots,
+        .owl-carousel .owl-nav {
+            text-align: center;
+            /* Center the dots horizontally */
+            margin-top: 15px;
+            /* Add some space between the carousel and the dots */
+        }
+
+        .owl-carousel .owl-nav {
+            font-size: 25px;
+        }
+
+        .owl-carousel .owl-dots .owl-dot {
+            display: inline-block;
+            width: 12px;
+            /* Adjust the size of the dots */
+            height: 12px;
+            margin: 0 5px;
+            /* Space between the dots */
+            background-color: #ccc;
+            /* Default color for the dots */
+            border-radius: 50%;
+            /* Make the dots round */
+            transition: background-color 0.3s ease;
+        }
+
+        .owl-carousel .owl-dots .owl-dot.active {
+            background-color: #CE1617;
+            /* Active dot color */
+        }
+
         .panel-heading img.cardx {
             height: 250px;
             /* Make the image fill the full height of the parent */
@@ -57,6 +88,36 @@
 
         .rars::-webkit-scrollbar {
             display: none;
+        }
+
+        img.fasilitasx {
+            width: 100%;
+            /* 3cm equivalent in pixels (approx) */
+            height: 200px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
+        }
+
+        .testimonial-img.gurux {
+            width: 75px;
+            /* 3cm equivalent in pixels (approx) */
+            height: 200px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
         }
     </style>
 </head>

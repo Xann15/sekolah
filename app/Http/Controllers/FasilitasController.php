@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Fasilitas;  // Ensure you are using the Fasilitas model
+use App\Fasilitas;
+use App\ProfileMadrasah;
 use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
@@ -12,31 +13,28 @@ class FasilitasController extends Controller
     {
         // Fetch all the fasilitas data from the database
         $fasilitas = Fasilitas::all();
-
+        $profile_madrasah = ProfileMadrasah::first();
         // Return a view with the fasilitas data
-        return view('fasilitas.index', compact('fasilitas'));
+        return view('fasilitas.index', compact('fasilitas', 'profile_madrasah'));
     }
 
     // Show the form for creating a new facility
     public function create()
     {
-        return view('fasilitas.create');
+        $profile_madrasah = ProfileMadrasah::first();
+        return view('fasilitas.create', compact('profile_madrasah'));
     }
 
     // Store a newly created facility in the database
     public function store(Request $request)
     {
-        // Validate the incoming request
-        $request->validate([
-            'nama' => 'required|max:45',
-            'foto' => 'required|string|max:255',
-        ]);
-
-        // Create a new facility record in the database
-        Fasilitas::create([
-            'nama' => $request->nama,
-            'foto' => $request->foto,
-        ]);
+        $fasilitas = new Fasilitas();
+        $fasilitas->nama   = $request->input('nama');
+        $image                   = $request->file('foto');
+        $imageName   = 'FAS-' . $image->getClientOriginalName();
+        $image->move('foto_fasilitas/', $imageName);
+        $fasilitas->foto  = $imageName;
+        $fasilitas->save();
 
         // Redirect to the list of fasilitas with a success message
         return redirect()->route('fasilitas.index')->with('success', 'Fasilitas created successfully!');
@@ -47,29 +45,22 @@ class FasilitasController extends Controller
     {
         // Find the fasilitas record by ID
         $fasilitas = Fasilitas::findOrFail($id);
-
+        $profile_madrasah = ProfileMadrasah::first();
         // Return a view with the fasilitas data for editing
-        return view('fasilitas.edit', compact('fasilitas'));
+        return view('fasilitas.edit', compact('fasilitas', 'profile_madrasah'));
     }
 
     // Update the specified facility in the database
     public function update(Request $request, $id)
     {
-        // Validate the incoming request
-        $request->validate([
-            'nama' => 'required|max:45',
-            'foto' => 'required|string|max:255',
-        ]);
+        $fasilitas = Fasilitas::findorfail($id);
+        $fasilitas->update($request->all());
 
-        // Find the fasilitas record by ID
-        $fasilitas = Fasilitas::findOrFail($id);
-
-        // Update the fasilitas record with the new data
-        $fasilitas->update([
-            'nama' => $request->nama,
-            'foto' => $request->foto,
-        ]);
-
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('foto_fasilitas/', 'FAS-' . $request->file('foto')->getClientOriginalName());
+            $fasilitas->foto = 'FAS-' . $request->file('foto')->getClientOriginalName();
+            $fasilitas->save();
+        }
         // Redirect to the list of fasilitas with a success message
         return redirect()->route('fasilitas.index')->with('success', 'Fasilitas updated successfully!');
     }

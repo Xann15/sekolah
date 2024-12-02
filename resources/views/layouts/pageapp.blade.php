@@ -90,6 +90,36 @@
         .rars::-webkit-scrollbar {
             display: none;
         }
+
+        .testimonial-img.gurux {
+            width: 75px;
+            /* 3cm equivalent in pixels (approx) */
+            height: 200px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
+        }
+
+        img.fasilitasx {
+            width: 100%;
+            /* 3cm equivalent in pixels (approx) */
+            height: 200px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
+        }
     </style>
 </head>
 

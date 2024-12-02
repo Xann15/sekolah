@@ -13,7 +13,8 @@
                         <h2>Terwujudnya {{ $profile_madrasah->nama }} yang Manis dengan Lulusan yang Mandiri, dengan
                             proses belajar Aktif, kreatif dan inovatif</h2>
                         <div class="d-flex">
-                            <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
+                            <a href="https://wa.me/{{ $contact->telpon }}?text=Saya+ingin+mendaftar+di+{{ $profile_madrasah->nama }}"
+                                class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
                             <a href="#informasi_pendaftaran" class="btn-watch-video scrollto">Informasi Pendaftaran <i
                                     class="icofont-info-circle"></i></a>
                         </div>
@@ -33,9 +34,9 @@
                         </ul>
                     </div>
                     <!-- <h2>Di Website {{ $profile_madrasah->nama }}</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="d-flex">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
-                                                                                                                                                                                                                                                                                                                                                                                                                          </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="d-flex">
+                                                                                                                                                                                                                                                                                                                                                                                                                                <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                              </div> -->
                 </div>
                 {{-- <div class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">

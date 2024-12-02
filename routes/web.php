@@ -62,6 +62,9 @@ Route::resource('/admin/about', 'AboutController');
 Route::resource('/admin/visimisi', 'VisiMisiController');
 Route::resource('/admin/program-studi-dan-jurusan', 'JurusanController');
 Route::get('/admin/program-studi-dan-jurusan/{id}/destroy', 'JurusanController@destroy');
+Route::resource('/admin/fasilitas', 'FasilitasController');
+Route::get('/admin/fasilitas/{id}/destroy', 'FasilitasController@destroy');
+
 
 
 Route::get('/about', function () {

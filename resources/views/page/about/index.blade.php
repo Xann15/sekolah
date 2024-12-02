@@ -68,7 +68,7 @@
                 @foreach ($gurutendik as $index => $gtk)
                     <div class="panel panel-default px-2">
                         <div class="panel-heading">
-                            <img src="{{ URL::to('/') }}/foto_gurutendik/{{ $gtk->foto }}" class="testimonial-img"
+                            <img src="{{ URL::to('/') }}/foto_gurutendik/{{ $gtk->foto }}" class="testimonial-img gurux"
                                 alt="">
                         </div>
                         <div class="panel-body">
