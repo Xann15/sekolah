@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutSeeder::class);
         $this->call(ContactSeeder::class);
         $this->call(EkstrakulikulerSeeder::class);
+        $this->call(FasilitasSeeder::class);
         $this->call(GallerySeeder::class);
         $this->call(GuruTendikSeeder::class);
         $this->call(InformasiPendaftaranSeeder::class);
