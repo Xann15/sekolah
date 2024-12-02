@@ -25,7 +25,8 @@
                 @foreach ($gurutendik as $gtk)
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="member">
-                            <img src="{{ URL::to('/') }}/foto_gurutendik/{{ $gtk->foto }}" alt="">
+                            <img src="{{ URL::to('/') }}/foto_gurutendik/{{ $gtk->foto }}" alt=""
+                                class="gurx">
                             <h4>{{ $gtk->nama }}</h4>
                             <span>{{ $gtk->jabatan }}</span>
 

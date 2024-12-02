@@ -27,13 +27,13 @@
                                     <form method="POST" action="{{ route('authenticate') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="mb-1"><strong>Email</strong></label>
-                                            <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" placeholder="example@mail.com" required
-                                                autocomplete="email" autofocus>
+                                            <label class="mb-1"><strong>Username</strong></label>
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                                value="{{ old('name') }}" placeholder="Enter your username ex Xann"
+                                                required autocomplete="name" autofocus>
 
-                                            @error('email')
+                                            @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -51,21 +51,11 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="form-row d-flex justify-content-between mt-4 mb-2">
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox ml-1">
-                                                    <input type="checkbox" class="custom-control-input" id="remember"
-                                                        name="remember">
-                                                    <label class="custom-control-label" for="remember">Ingat preferensi
-                                                        saya</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
                                         </div>
                                     </form>
+
                                     <p class="mt-3">Don't have an account? <a href="/register">Register
                                             here</a></p>
                                     <div class="new-account mt-3">
@@ -79,6 +69,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Sweet Alert  -->
+    @include('sweetalert::alert')
 </body>
 
 </html>

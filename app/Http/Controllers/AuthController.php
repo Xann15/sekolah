@@ -28,21 +28,24 @@ class AuthController extends Controller
     // Proses autentikasi saat login
     public function authenticate(Request $request)
     {
+        // Validasi input
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'name' => ['required'], // Hapus 'name' => ['required', 'name'] karena validator tidak mengenal rule 'name'
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Coba login dengan name dan password
+        if (Auth::attempt(['name' => $credentials['name'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
-
             return redirect('/admin/home');
         }
 
+        // Jika gagal login
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'name' => 'The provided credentials do not match our records.',
         ]);
     }
+
 
     // Proses penyimpanan user baru (register)
     public function store(Request $request)

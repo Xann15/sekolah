@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class Gallery extends Model
 {
-    protected $table = 'berita';
+    protected $table = 'gallery';
     protected $fillable = ['judul', 'foto', 'deskripsi', 'penulis'];
 }

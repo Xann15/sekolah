@@ -119,6 +119,21 @@
             border: none;
             /* Optional: adds a border like a photo frame */
         }
+
+        img.gurx {
+            width: 200px;
+            /* 3cm equivalent in pixels (approx) */
+            height: 270px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
+        }
     </style>
 </head>
 
@@ -152,7 +167,6 @@
                     </li>
 
                     <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/admin/gallery">GALERI</a></li>
-                    <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/admin/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
                         <ul>

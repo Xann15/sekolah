@@ -30,6 +30,44 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <style>
+        img.galleryx {
+            width: 100%;
+            /* 3cm equivalent in pixels (approx) */
+            height: 550px;
+            /* 4cm equivalent in pixels (approx) */
+            object-fit: cover;
+            /* Ensures the image fits perfectly within the container */
+            object-position: center;
+            /* Centers the image */
+            border-radius: 5px;
+            /* Optional: adds slight rounding to the corners */
+            border: none;
+            /* Optional: adds a border like a photo frame */
+        }
+
+        .panel-heading img.cardx {
+            height: 200px;
+            /* Make the image fill the full height of the parent */
+            width: 100%;
+            /* Make the image fill the full width of the parent */
+            object-fit: cover;
+            /* Ensures the image covers the container area without distortion */
+            object-position: center;
+            /* Optional: centers the image within the container */
+        }
+
+        img.jumbox {
+            height: 650px;
+            /* Make the image fill the full height of the parent */
+            width: 100%;
+            /* Make the image fill the full width of the parent */
+            object-fit: cover;
+            /* Ensures the image covers the container area without distortion */
+            object-position: center;
+            /* Optional: centers the image within the container */
+        }
+    </style>
 </head>
 
 <body>
@@ -62,7 +100,6 @@
                         </ul>
                     </li>
                     <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/gallery">GALERI</a></li>
-                    <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
                     <ul>
@@ -90,69 +127,6 @@
 
         @yield('content')
 
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container">
-
-                <div class="section-title">
-                    <span>Contact</span>
-                    <h2>Contact</h2>
-                    <p>Untuk informasi lebih lanjut, bisa menghubungi contact berikut</p>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-5 d-flex align-items-stretch">
-                        <div class="info">
-                            <div class="email">
-                                <i class="icofont-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>{{ $contact->email }}</p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="icofont-phone"></i>
-                                <h4>Telpon/HP:</h4>
-                                <p>{{ $contact->telpon }}</p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="icofont-instagram"></i>
-                                <h4>Instagram:</h4>
-                                <p>{{ $contact->instagram }}</p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="icofont-facebook"></i>
-                                <h4>Facebook:</h4>
-                                <p>{{ $contact->facebook }}</p>
-                            </div>
-                            <div class="phone">
-                                <i class="icofont-twitter"></i>
-                                <h4>Twitter:</h4>
-                                <p>{{ $contact->twitter }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7 d-flex align-items-stretch">
-                        <div class="info">
-                            <div class="address">
-                                <i class="icofont-google-map"></i>
-                                <h4>Alamat:</h4>
-                                <p>{{ $contact->alamat }}</p>
-                            </div>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0068812494032!2d104.02331897567956!3d1.1555703621680633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98994c3186803%3A0x86421887be081325!2sSekolah%20Satu%20Bangsa%20Harmoni!5e0!3m2!1sid!2sid!4v1731206283981!5m2!1sid!2sid"
-                                width="100%" height="290px" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Contact Section -->
     </main><!-- End #main -->
 
 
@@ -197,6 +171,19 @@
 
     <!-- Sweet Alert  -->
     @include('sweetalert::alert')
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 1, // Show 1 items per view
+            margin: 20, // Space between items
+            loop: true, // Enable looping
+            nav: false, // Show next/prev arrows
+            dots: false, // Show dots for navigation
+            autoplay: true, // Enable autoplay
+            autoplayTimeout: 3000, // Set autoplay time (3000ms = 3 seconds)
+            autoplayHoverPause: true, // Pause autoplay on hover
+        });
+    </script>
 
 </body>
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\ProfileMadrasah;
-use App\Berita;
+use App\Gallery;
 use Illuminate\Http\Request;
 
-class BeritaController extends Controller
+class GalleryController extends Controller
 {
     public function __construct()
     {
@@ -20,8 +20,8 @@ class BeritaController extends Controller
     public function index()
     {
         $profile_madrasah = ProfileMadrasah::first();
-        $berita = Berita::orderByRaw('created_at DESC')->get();
-        return view('berita.index', compact('berita', 'profile_madrasah'));
+        $gallery = Gallery::orderByRaw('created_at DESC')->get();
+        return view('gallery.index', compact('gallery', 'profile_madrasah'));
     }
 
     /**
@@ -32,7 +32,7 @@ class BeritaController extends Controller
     public function create()
     {
         $profile_madrasah = ProfileMadrasah::first();
-        return view('berita.create', compact('profile_madrasah'));
+        return view('gallery.create', compact('profile_madrasah'));
     }
 
     /**
@@ -43,16 +43,16 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $berita = new Berita();
-        $berita->judul   = $request->input('judul');
+        $gallery = new Gallery();
+        $gallery->judul   = $request->input('judul');
         $filefoto                  = $request->file('foto');
-        $filefotoName   = 'FB-' . $filefoto->getClientOriginalName();
-        $filefoto->move('foto_berita/', $filefotoName);
-        $berita->foto  = $filefotoName;
-        $berita->penulis   = $request->input('penulis');
-        $berita->deskripsi   = $request->input('deskripsi');
-        $berita->save();
-        return redirect()->route('berita.index')->with("success", "Berita berhasil disimpan");
+        $filefotoName   = 'GL-' . $filefoto->getClientOriginalName();
+        $filefoto->move('foto_gallery/', $filefotoName);
+        $gallery->foto  = $filefotoName;
+        $gallery->penulis   = $request->input('penulis');
+        $gallery->deskripsi   = $request->input('deskripsi');
+        $gallery->save();
+        return redirect()->route('gallery.index')->with("success", "Gallery berhasil disimpan");
     }
 
     /**
@@ -64,8 +64,8 @@ class BeritaController extends Controller
     public function show($id)
     {
         $profile_madrasah = ProfileMadrasah::first();
-        $berita = Berita::find($id);
-        return view('berita.show', compact('berita', 'profile_madrasah'));
+        $gallery = Gallery::find($id);
+        return view('gallery.show', compact('gallery', 'profile_madrasah'));
     }
 
     /**
@@ -77,8 +77,8 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $profile_madrasah = ProfileMadrasah::first();
-        $berita = Berita::find($id);
-        return view('berita.edit', compact('berita', 'profile_madrasah'));
+        $gallery = Gallery::find($id);
+        return view('gallery.edit', compact('gallery', 'profile_madrasah'));
     }
 
     /**
@@ -90,15 +90,15 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $berita = Berita::findorfail($id);
-        $berita->update($request->all());
+        $gallery = Gallery::findorfail($id);
+        $gallery->update($request->all());
 
         if ($request->hasFile('foto')) {
-            $request->file('foto')->move('foto_berita/', 'FB-' . $request->file('foto')->getClientOriginalName());
-            $berita->foto = 'FB-' . $request->file('foto')->getClientOriginalName();
-            $berita->save();
+            $request->file('foto')->move('foto_gallery/', 'GL-' . $request->file('foto')->getClientOriginalName());
+            $gallery->foto = 'GL-' . $request->file('foto')->getClientOriginalName();
+            $gallery->save();
         }
-        return redirect('admin/berita')->with('success', 'Edit data sukses');
+        return redirect('admin/gallery')->with('success', 'Edit data sukses');
     }
 
     /**
@@ -110,9 +110,9 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         try {
-            $berita = Berita::find($id);
-            $berita->delete();
-            return redirect('admin/berita')->with('success', 'Hapus data sukses');
+            $gallery = Gallery::find($id);
+            $gallery->delete();
+            return redirect('admin/gallery')->with('success', 'Hapus data sukses');
         } catch (\Illuminate\Database\QueryException $ex) {
             return redirect()->back()->with('warning', 'Maaf data  tidak dapat dihapus');
         }

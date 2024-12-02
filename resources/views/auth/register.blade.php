@@ -92,6 +92,8 @@
             </div>
         </div>
     </div>
+    <!-- Sweet Alert  -->
+    @include('sweetalert::alert')
 </body>
 
 </html>

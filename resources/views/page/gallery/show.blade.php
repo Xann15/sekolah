@@ -6,23 +6,23 @@
         <div class="container">
 
             <div class="portfolio-details-container">
-                <img src="{{ URL::to('/') }}/foto_berita/{{ $berita->foto }}" class="img-fluid" style="width: 100%"
+                <img src="{{ URL::to('/') }}/foto_gallery/{{ $gallery->foto }}" class="img-fluid jumbox" style="width: 100%"
                     alt="">
                 <div class="portfolio-info">
-                    <h3>Informasi Berita</h3>
+                    <h3>Informasi Gallery</h3>
                     <ul>
-                        <li><strong>Judul</strong>: {{ $berita->judul }}</li>
-                        <li><strong>Penulis</strong>: {{ $berita->penulis }}</li>
-                        <li><strong>Diposting</strong>: {{ $berita->created_at }}</li>
+                        <li><strong>Judul</strong>: {{ $gallery->judul }}</li>
+                        <li><strong>Penulis</strong>: {{ $gallery->penulis }}</li>
+                        <li><strong>Diposting</strong>: {{ $gallery->created_at }}</li>
                     </ul>
                 </div>
 
             </div>
 
             <div class="portfolio-description">
-                <h2>{{ $berita->judul }}</h2>
+                <h2>{{ $gallery->judul }}</h2>
                 <p>
-                    {!! $berita->deskripsi !!}
+                    {!! $gallery->deskripsi !!}
                 </p>
             </div>
 

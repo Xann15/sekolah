@@ -7,6 +7,7 @@ use App\Fasilitas;
 use App\GuruTendik;
 use App\Ekstrakulikuler;
 use App\ProfileMadrasah;
+use App\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -42,8 +43,6 @@ Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])->nam
 
 
 
-Route::get('/berita/{id}', 'LeandingPageController@show_berita');
-Route::get('/berita', 'LeandingPageController@index_berita');
 
 // Auth::routes();
 
@@ -54,8 +53,6 @@ Route::get('/admin/ekstrakulikuler/{id}/destroy', 'EkstrakulikulerController@des
 Route::resource('/admin/gurutendik', 'GuruTendikController');
 Route::get('/admin/gurutendik/{id}/destroy', 'GuruTendikController@destroy');
 Route::resource('/admin/contact', 'ContactController');
-Route::resource('/admin/berita', 'BeritaController');
-Route::get('/admin/berita/{id}/destroy', 'BeritaController@destroy');
 Route::resource('/admin/informasipendaftaran', 'InformasiPendaftaranController');
 Route::resource('/admin/katasambutankepsek', 'KataSambutanKepsekController');
 Route::resource('/admin/about', 'AboutController');
@@ -65,36 +62,48 @@ Route::get('/admin/program-studi-dan-jurusan/{id}/destroy', 'JurusanController@d
 Route::resource('/admin/fasilitas', 'FasilitasController');
 Route::get('/admin/fasilitas/{id}/destroy', 'FasilitasController@destroy');
 
+Route::resource('/admin/gallery', 'GalleryController');
+Route::get('/admin/gallery/{id}/destroy', 'GalleryController@destroy');
+
+
+
+Route::get('/gallery', function () {
+    $profile_madrasah = ProfileMadrasah::first();
+    $gallery = Gallery::all();
+    return view('page.gallery.index', compact('profile_madrasah', 'gallery'));
+});
+
+Route::get('/gallery/{id}', function ($id) {
+    $profile_madrasah = ProfileMadrasah::first();
+
+    // Fetch gallery by ID, if not found throw a 404 error
+    $gallery = Gallery::find($id);
+    if (!$gallery) {
+        abort(404, 'Gallery not found');
+    }
+
+    return view('page.gallery.show', compact('profile_madrasah', 'gallery'));
+})->where('id', '[0-9]+'); // Ensure the ID parameter is numeric
 
 
 Route::get('/about', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $gurutendik = GuruTendik::all();
-    $contact = Contact::first();
     $about = About::first();
-    return view('page.about.index', compact('profile_madrasah', 'contact', 'gurutendik', 'about'));
+    return view('page.about.index', compact('profile_madrasah', 'about', 'gurutendik'));
 });
 Route::get('/program-studi-dan-jurusan', function () {
     $profile_madrasah = ProfileMadrasah::first();
-    $contact = Contact::first();
     $jurusan = Jurusan::all();
-    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah', 'contact', 'jurusan'));
+    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah', 'jurusan'));
 });
 Route::get('/fasilitas', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $fasilitas = Fasilitas::all();
-    $contact = Contact::first();
-    return view('page.fasilitas.index', compact('profile_madrasah', 'fasilitas', 'contact'));
+    return view('page.fasilitas.index', compact('profile_madrasah', 'fasilitas'));
 });
 Route::get('/ekstrakulikuler', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $ekstrakulikuler = Ekstrakulikuler::orderByRaw('created_at DESC')->get();
-    $contact = Contact::first();
-    return view('page.ekstrakulikuler.index', compact('profile_madrasah', 'ekstrakulikuler', 'contact'));
-});
-Route::get('/gallery', function () {
-    $profile_madrasah = ProfileMadrasah::first();
-    // $gallery = Gallery::orderByRaw('created_at DESC')->get();
-    $contact = Contact::first();
-    return view('page.gallery.index', compact('profile_madrasah', 'contact'));
+    return view('page.ekstrakulikuler.index', compact('profile_madrasah', 'ekstrakulikuler'));
 });

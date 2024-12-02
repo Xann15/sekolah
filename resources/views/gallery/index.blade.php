@@ -6,10 +6,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Berita</h4>
+                <h4>Gallery</h4>
                 <ol>
                     <li><a href="{{ route('home') }}">Dashboard</a></li>
-                    <li>Berita</li>
+                    <li>Gallery</li>
                 </ol>
             </div>
 
@@ -18,41 +18,42 @@
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about pt-3">
-        <div class="text-center pb-4"><a href="{{ route('berita.create') }}" class="btn btn-md btn-success">Tulis Berita
+        <div class="text-center pb-4"><a href="{{ route('gallery.create') }}" class="btn btn-md btn-success">Tulis Gallery
                 Baru</a></div>
         <div class="container">
             <div class="row">
-                @foreach ($berita as $data_berita)
-                    <div class="col-md-4">
+                @foreach ($gallery as $data_gallery)
+                    <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="panel panel-default">
 
                             <div class="panel-heading post-thumb">
-                                <img class="card-img-top" src="{{ URL::to('/') }}/foto_berita/{{ $data_berita->foto }}" />
+                                <img class="card-img-top cardx"
+                                    src="{{ URL::to('/') }}/foto_gallery/{{ $data_gallery->foto }}" />
                             </div>
 
-                            <div class="panel-body post-body-berita">
-                                <h5>{{ $data_berita->judul }}</h5>
+                            <div class="panel-body post-body mt-2">
+                                <a href="/gallery/{{ $data_gallery->id }}" target="_blank">
+                                    <h5>{{ $data_gallery->judul }}</h5>
+                                </a>
                                 <h6 class="post-title">
-                                    <span>{{ $data_berita->penulis }} -
-                                        {{ $data_berita->created_at->diffForHumans() }}</span>
+                                    <span>{{ $data_gallery->penulis }} -
+                                        {{ $data_gallery->created_at->diffForHumans() }}</span>
                                 </h6>
-                                <span>{!! substr($data_berita->deskripsi, 0, 220) !!}..... </span> <br>
-                                <a href="{{ route('berita.show', $data_berita->id) }}" target="_blank">Baca selengkapnya</a>
+                                <span>{!! Str::limit($data_gallery->deskripsi, 100, '...') !!}..... </span> <br>
+                                <a href="/gallery/{{ $data_gallery->id }}" target="_blank">Baca selengkapnya</a>
                                 <div class="post-author">
-                                    <a href="{{ route('berita.edit', $data_berita->id) }}"
+                                    <a href="{{ route('gallery.edit', $data_gallery->id) }}"
                                         class="btn btn-sm btn-primary">Edit Data</a>
-                                    <a href="/admin/berita/{{ $data_berita->id }}/destroy"
+                                    <a href="/admin/gallery/{{ $data_gallery->id }}/destroy"
                                         class="btn btn-danger btn-sm my-1 mr-sm-1"
                                         onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
                                         Hapus Data</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 @endforeach
             </div>
-        </div>
         </div>
     </section><!-- End About -->
 @endsection

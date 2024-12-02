@@ -14,30 +14,30 @@ class GuruTendikSeeder extends Seeder
     {
         DB::table('gurutendik')->insert([
             [
-                'nama' => 'Guru 1',
-                'jabatan' => 'Jabatan 1',
-                'foto' => 'GTK-_DSC1881.JPG',
+                'nama' => 'Marcus Aurelius',
+                'jabatan' => 'Guru Mata Pelajaran Filsafat Berfikir',
+                'foto' => 'GTK-marcus.jpeg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => 'Guru 2',
-                'jabatan' => 'Jabatan 2',
-                'foto' => 'GTK-_DSC1881.JPG',
+                'nama' => 'Socrates',
+                'jabatan' => 'Guru Mata Pelajaran Etika Kesusilaan',
+                'foto' => 'GTK-socrates.jpeg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => 'Guru 3',
-                'jabatan' => 'Jabatan 3',
-                'foto' => 'GTK-_DSC1881.JPG',
+                'nama' => 'Plato',
+                'jabatan' => 'Guru Mata Pelajaran Filsafat Kuno',
+                'foto' => 'GTK-plato.jpeg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => 'Guru 4',
-                'jabatan' => 'Jabatan 4',
-                'foto' => 'GTK-_DSC1881.JPG',
+                'nama' => 'Aristoteles',
+                'jabatan' => 'Guru Mata Pelajaran Filsafat Kuno',
+                'foto' => 'GTK-aristoteles.jpeg',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

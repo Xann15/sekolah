@@ -132,7 +132,6 @@
                     </li>
 
                     <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/admin/gallery">GALERI</a></li>
-                    <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/admin/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
                         <ul>

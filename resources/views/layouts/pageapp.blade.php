@@ -37,6 +37,7 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
+
     <style>
         .owl-carousel .owl-dots,
         .owl-carousel .owl-nav {
@@ -153,7 +154,6 @@
                         </ul>
                     </li>
                     <li class="{{ Request::is('gallery') ? 'active' : '' }}"><a href="/gallery">GALERI</a></li>
-                    <li class="{{ Request::is('berita') ? 'active' : '' }}"><a href="/berita">BERITA</a></li>
 
                     {{-- <li class="drop-down"><a href="#">Tentang Kami</a>
                     <ul>
@@ -216,7 +216,7 @@
     <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/assets/vendor/venobox/venobox.min.js"></script>
     {{-- <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/owl.carousel/dist/owl.carousel.min.js"></script>
 
 

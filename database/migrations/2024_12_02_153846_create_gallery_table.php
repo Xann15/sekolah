@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Gallery extends Migration
+class CreateGalleryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,10 @@ class Gallery extends Migration
     {
         Schema::create('gallery', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('gambar');
-            $table->string('diposting_oleh', 45);
+            $table->string('judul');
+            $table->string('foto');
+            $table->longText('deskripsi');
+            $table->string('penulis', 45);
             $table->timestamps();
         });
     }
