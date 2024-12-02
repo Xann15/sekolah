@@ -21,7 +21,7 @@ class KataSambutanKepsekController extends Controller
     public function index()
     {
         $katasambutan_kepsek = KataSambutanKepsek::first();
-        return view('about.index', compact('katasambutan_kepsek'));
+        return view('katasambutankepsek.index', compact('katasambutan_kepsek'));
     }
 
     /**
@@ -32,7 +32,7 @@ class KataSambutanKepsekController extends Controller
     public function create()
     {
         $katasambutan_kepsek = KataSambutanKepsek::first();
-        return view('about.create', compact('katasambutan_kepsek'));
+        return view('katasambutankepsek.create', compact('katasambutan_kepsek'));
     }
 
     /**
@@ -55,8 +55,8 @@ class KataSambutanKepsekController extends Controller
     public function edit($id)
     {
         $profile_madrasah = ProfileMadrasah::first();
-        $about = About::find($id);
-        return view('about.edit', compact('about', 'profile_madrasah'));
+        $katasambutan_kepsek = KataSambutanKepsek::find($id);
+        return view('katasambutankepsek.edit', compact('katasambutan_kepsek', 'profile_madrasah'));
     }
 
     /**

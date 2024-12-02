@@ -44,9 +44,9 @@ class ProfileMadrasahController extends Controller
         $profile_madrasah = new ProfileMadrasah();
         $profile_madrasah->nama   = $request->input('nama');
         $profile_madrasah->jumlah_rombel   = $request->input('jumlah_rombel');
-        $profile_madrasah->jumlah_siswa   = $request->input('jumlah_siswa');
         $profile_madrasah->jumlah_guru   = $request->input('jumlah_guru');
-        $profile_madrasah->jumlah_tendik   = $request->input('jumlah_tendik');
+        $profile_madrasah->jumlah_siswa   = $request->input('jumlah_siswa');
+        $profile_madrasah->jumlah_jurusan   = $request->input('jumlah_jurusan');
         $profile_madrasah->deskripsi   = $request->input('deskripsi');
         $filegambar                  = $request->file('gambar');
         $filegambarName   = 'GP-' . $filegambar->getClientOriginalName();

@@ -69,26 +69,35 @@
             /* Active dot color */
         }
 
+        .d-flex {
+            display: flex;
+            align-items: center;
+            /* Untuk meratakan garis dan teks secara vertikal */
+        }
 
-        .panel-heading img.cardx {
-            height: 250px;
-            /* Make the image fill the full height of the parent */
-            width: 100%;
-            /* Make the image fill the full width of the parent */
+        .line {
+            flex-grow: 1;
+            /* Garis akan mengisi sisa ruang yang ada */
+            height: 1px;
+            /* Tebal garis */
+            background-color: #000;
+            /* Warna garis */
+        }
+
+        h2 {
+            margin: 0;
+            /* Menghapus margin default */
+        }
+
+        .img-carousel {
+            height: 350px;
+            /* Set height for the images */
+            width: auto;
+            /* Let the width adjust automatically based on the aspect ratio */
             object-fit: cover;
-            /* Ensures the image covers the container area without distortion */
+            /* This will ensure the image covers the area without distortion */
             object-position: center;
-            /* Optional: centers the image within the container */
-        }
-
-        .rars {
-            height: 300px;
-            overflow-y: scroll;
-            margin-bottom: 20px
-        }
-
-        .rars::-webkit-scrollbar {
-            display: none;
+            /* Optional: centers the image within its container */
         }
     </style>
 </head>
@@ -208,25 +217,14 @@
 
         var owl = $('.owl-carousel');
         owl.owlCarousel({
-            items: 6, // Show 6 items per view
+            items: 1, // Show 6 items per view
             margin: 20, // Space between items
             loop: true, // Enable looping
             nav: true, // Show next/prev arrows
-            dots: true, // Show dots for navigation
+            dots: false, // Show dots for navigation
             autoplay: true, // Enable autoplay
             autoplayTimeout: 3000, // Set autoplay time (3000ms = 3 seconds)
             autoplayHoverPause: true, // Pause autoplay on hover
-            responsive: {
-                0: {
-                    items: 2, // For small screens, show 1 item
-                },
-                768: {
-                    items: 4, // For medium screens, show 3 items
-                },
-                1024: {
-                    items: 6, // For larger screens, show 6 items
-                }
-            }
         });
     </script>
 

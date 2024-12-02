@@ -38,23 +38,17 @@
                         <div class="row counters">
 
                             <div class="col-lg-3 col-6 text-center">
-                                <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_rombel }}</span>
-                                <p>Rombongan Belajar</p>
+                                <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_guru }}</span>
+                                <p>Guru</p>
                             </div>
-
                             <div class="col-lg-3 col-6 text-center">
                                 <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_siswa }}</span>
                                 <p>Siswa</p>
                             </div>
 
                             <div class="col-lg-3 col-6 text-center">
-                                <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_guru }}</span>
-                                <p>Guru</p>
-                            </div>
-
-                            <div class="col-lg-3 col-6 text-center">
-                                <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_tendik }}</span>
-                                <p>Tenaga Kependidikan</p>
+                                <span data-toggle="counter-up">{{ $profile_madrasah->jumlah_jurusan }}</span>
+                                <p>Jurusan</p>
                             </div>
                         </div>
                     </div>

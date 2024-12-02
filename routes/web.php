@@ -2,6 +2,7 @@
 
 use App\About;
 use App\Contact;
+use App\Jurusan;
 use App\Fasilitas;
 use App\GuruTendik;
 use App\Ekstrakulikuler;
@@ -59,6 +60,8 @@ Route::resource('/admin/informasipendaftaran', 'InformasiPendaftaranController')
 Route::resource('/admin/katasambutankepsek', 'KataSambutanKepsekController');
 Route::resource('/admin/about', 'AboutController');
 Route::resource('/admin/visimisi', 'VisiMisiController');
+Route::resource('/admin/program-studi-dan-jurusan', 'JurusanController');
+Route::get('/admin/program-studi-dan-jurusan/{id}/destroy', 'JurusanController@destroy');
 
 
 Route::get('/about', function () {
@@ -71,7 +74,8 @@ Route::get('/about', function () {
 Route::get('/program-studi-dan-jurusan', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $contact = Contact::first();
-    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah', 'contact'));
+    $jurusan = Jurusan::all();
+    return view('page.program-studi-dan-jurusan.index', compact('profile_madrasah', 'contact', 'jurusan'));
 });
 Route::get('/fasilitas', function () {
     $profile_madrasah = ProfileMadrasah::first();

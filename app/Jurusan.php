@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Jurusan extends Model
 {
-
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'about';
+    protected $table = 'jurusan';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +19,10 @@ class About extends Model
      * @var array
      */
     protected $fillable = [
+        'nama',
         'deskripsi',
-        'logo_sekolah',
+        'foto1',
+        'foto2',
+        'foto3',
     ];
 }

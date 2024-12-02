@@ -14,7 +14,7 @@
                     data-aos-delay="300">
                     <h3>{{ $profile_madrasah->nama }}</h3>
                     <p>
-                        {!! $about->deskripsi_singkat !!}
+                        {!! $about->deskripsi !!}
                     </p>
                 </div>
             </div>
@@ -33,30 +33,6 @@
         </div>
     </section>
     <!-- End About -->
-
-    <!-- Another One -->
-    <section id="about-description" class="about m-3 md-5">
-        <div class="container">
-            <h4 class="fw-bold" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                {{ $profile_madrasah->nama }}
-            </h4>
-            <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">
-                {!! $about->deskripsi_panjang !!}
-            </p>
-        </div>
-        <div class="fw-bold kelola-data m-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-            <ul>
-                <li class="drop-down">
-                    <a>Kelola Data</a>
-                    <ul>
-                        <li><a class="dropdown-item" href="{{ route('about.edit', $profile_madrasah->id) }}">Edit</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!-- End Another One -->
 
     <section id="visimisi" class="team section-bg">
         <div class="container">
@@ -153,16 +129,6 @@
                             <p>{{ $contact->instagram }}</p>
                         </div>
 
-                        <div class="phone">
-                            <i class="icofont-facebook"></i>
-                            <h4>Facebook:</h4>
-                            <p>{{ $contact->facebook }}</p>
-                        </div>
-                        <div class="phone">
-                            <i class="icofont-twitter"></i>
-                            <h4>Twitter:</h4>
-                            <p>{{ $contact->twitter }}</p>
-                        </div>
                     </div>
                 </div>
 

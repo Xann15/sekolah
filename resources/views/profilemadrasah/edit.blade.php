@@ -26,32 +26,24 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="jumlah_rombel">Jumlah Rombongan Belajar</label>
-                            <input type="number" class="form-control" name="jumlah_rombel" id="jumlah_rombel"
-                                value="{{ $profile_madrasah->jumlah_rombel }}" required />
-                            <div class="validate"></div>
-                        </div>
-                        <div class="form-group col-md-6">
                             <label for="jumlah_siswa">Jumlah Siswa</label>
                             <input type="number" name="jumlah_siswa" class="form-control" id="jumlah_siswa"
                                 value="{{ $profile_madrasah->jumlah_siswa }}" required />
                             <div class="validate"></div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="jumlah_guru">Jumlah Guru</label>
                             <input type="number" class="form-control" name="jumlah_guru" id="jumlah_guru"
                                 value="{{ $profile_madrasah->jumlah_guru }}" required />
                             <div class="validate"></div>
                         </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="jumlah_tendik">Jumlah Tenaga Kependidikan</label>
-                            <input type="number" name="jumlah_tendik" class="form-control" id="validationTooltip05"
-                                value="{{ $profile_madrasah->jumlah_tendik }}" required />
-                            <div class="invalid-tooltip">
-                                Please provide a valid zip.
-                            </div>
+                            <label for="jumlah_jurusan">Jumlah Jurusan</label>
+                            <input type="number" class="form-control" name="jumlah_jurusan" id="jumlah_jurusan"
+                                value="{{ $profile_madrasah->jumlah_jurusan }}" required />
+                            <div class="validate"></div>
                         </div>
                     </div>
                     <div class="form-group">

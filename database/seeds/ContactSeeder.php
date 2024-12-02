@@ -18,8 +18,6 @@ class ContactSeeder extends Seeder
                 'email' => 'sekolah@gmail.com',
                 'telpon' => '0123456789',
                 'instagram' => '@instagram',
-                'facebook' => '@facebook',
-                'twitter' => '@twitter',
                 'created_at' => now(),
                 'updated_at' => now()
             ]

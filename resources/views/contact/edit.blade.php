@@ -45,18 +45,6 @@
                                 value="{{ $contact->instagram }}">
                             <div class="validate"></div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="facebook">Facebook</label>
-                            <input type="text" class="form-control" name="facebook" id="facebook"
-                                value="{{ $contact->facebook }}">
-                            <div class="validate"></div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="twitter">Twitter</label>
-                            <input type="text" class="form-control" name="twitter" id="twitter"
-                                value="{{ $contact->twitter }}">
-                            <div class="validate"></div>
-                        </div>
                     </div>
 
                     <div class="text-center"><button class="bg-success btn-sm" type="submit">Simpan Data</button></div>

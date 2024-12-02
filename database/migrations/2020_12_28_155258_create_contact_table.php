@@ -19,8 +19,6 @@ class CreateContactTable extends Migration
             $table->string('email', 45);
             $table->string('telpon', 45)->nullable();
             $table->string('instagram', 45)->nullable();
-            $table->string('facebook', 45)->nullable();
-            $table->string('twitter', 45)->nullable();
             $table->timestamps();
         });
     }

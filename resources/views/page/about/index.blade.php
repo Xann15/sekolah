@@ -14,7 +14,7 @@
                     data-aos-delay="300">
                     <h3>{{ $profile_madrasah->nama }}</h3>
                     <p>
-                        {!! $about->deskripsi_singkat !!}
+                        {!! $about->deskripsi !!}
                     </p>
                 </div>
             </div>
@@ -22,19 +22,6 @@
         </div>
     </section>
     <!-- End About -->
-
-    <!-- Another One -->
-    <section id="about-description" class="about m-3 md-5">
-        <div class="container">
-            <h4 class="fw-bold" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                {{ $profile_madrasah->nama }}
-            </h4>
-            <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">
-                {!! $about->deskripsi_panjang !!}
-            </p>
-        </div>
-    </section>
-    <!-- End Another One -->
 
     <section id="visimisi" class="team section-bg">
         <div class="container">

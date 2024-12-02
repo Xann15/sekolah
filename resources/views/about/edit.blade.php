@@ -19,16 +19,9 @@
                     {{ csrf_field() }}
                     @method('put')
                     <div class="form-group">
-                        <label for="deskripsi_singkat">Deskripsi Singkat</label>
-                        <textarea class="form-control summernote" id="deskripsi_singkat" name="deskripsi_singkat" rows="5"
-                            data-rule="minlen:20" data-msg="Deskripsi singkat minimal 20 karakter" required>{{ $about->deskripsi_singkat }}</textarea>
-                        <div class="validate"></div>
-                    </div>
-                    @method('put')
-                    <div class="form-group">
-                        <label for="deskripsi_panjang">Deskripsi Panjang</label>
-                        <textarea class="form-control summernote" id="deskripsi_panjang" name="deskripsi_panjang" rows="10"
-                            data-rule="minlen:20" data-msg="Deskripsi Panjang minimal 20 karakter" required>{{ $about->deskripsi_panjang }}</textarea>
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea class="form-control summernote" id="deskripsi" name="deskripsi" rows="5" data-rule="minlen:20"
+                            data-msg="Deskripsi minimal 20 karakter" required>{{ $about->deskripsi }}</textarea>
                         <div class="validate"></div>
                     </div>
                     <div class="form-row">

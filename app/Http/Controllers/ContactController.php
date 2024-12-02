@@ -48,8 +48,6 @@ class ContactController extends Controller
         $contact->email   = $request->input('email');
         $contact->telpon   = $request->input('telpon');
         $contact->instagram   = $request->input('instagram');
-        $contact->facebook   = $request->input('facebook');
-        $contact->twitter   = $request->input('twitter');
         $contact->save();
         return redirect()->route('admin/contact.index')->with("success", "Data berhasil disimpan");
     }

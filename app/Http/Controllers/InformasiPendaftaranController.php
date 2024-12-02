@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProfileMadrasah;
 use App\InformasiPendaftaran;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class InformasiPendaftaranController extends Controller
@@ -20,8 +21,9 @@ class InformasiPendaftaranController extends Controller
     public function index()
     {
         $profile_madrasah = ProfileMadrasah::first();
-        $informasi_pendaftaran = InformasiPendaftaran::orderByRaw('created_at DESC')->paginate(1);
-        return view('informasipendaftaran.index', compact('informasi_pendaftaran', 'profile_madrasah'));
+        $informasi_pendaftaran = InformasiPendaftaran::first();
+        $contact = Contact::first();
+        return view('informasipendaftaran.index', compact('informasi_pendaftaran', 'profile_madrasah', 'contact'));
     }
 
     /**

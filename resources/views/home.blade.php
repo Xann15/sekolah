@@ -33,9 +33,9 @@
                         </ul>
                     </div>
                     <!-- <h2>Di Website {{ $profile_madrasah->nama }}</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                          <div class="d-flex">
-                                                                                                                                                                                                                                                                                                                                                                                                            <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
-                                                                                                                                                                                                                                                                                                                                                                                                          </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="d-flex">
+                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="/register" class="btn-get-started scrollto" target="_blank">Daftar Sekarang</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                          </div> -->
                 </div>
                 {{-- <div class="col-lg-6 order-1 order-lg-2 hero-img">
                     <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -107,24 +107,18 @@
         <div class="container">
 
             <div class="row counters mt-5">
-                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
-                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_rombel }}</span>
-                    <p>Rombongan Belajar</p>
-                </div>
 
-                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_siswa }}</span>
-                    <p>Siswa</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="col-4 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                     <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_guru }}</span>
                     <p>Guru</p>
                 </div>
-
-                <div class="col-lg-3 col-6 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_tendik }}</span>
-                    <p>Tenaga Kependidikan</p>
+                <div class="col-4 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_siswa }}</span>
+                    <p>Siswa</p>
+                </div>
+                <div class="col-4 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <span data-toggle="counter-up"> {{ $profile_madrasah->jumlah_jurusan }}</span>
+                    <p>Jurusan</p>
                 </div>
 
             </div>
@@ -145,47 +139,7 @@
 
 
     <main id="main">
-        <!-- ======= Berita Section ======= -->
-        <section id="berita" class="testimonials section-bg">
-            <div class="container">
 
-                <div class="section-title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                    <span>Berita Terbaru</span>
-                    <h2>Berita Terbaru</h2>
-                    <p><a href="/berita" target="_blank">Lihat semua berita....</a></p>
-                </div>
-
-                <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-duration="800">
-                    @foreach ($berita_terbaru as $berita)
-                        <div class="panel panel-default px-2">
-                            <div class="panel-heading post-thumb">
-                                <img src="{{ URL::to('/') }}/foto_berita/{{ $berita->foto }}" class="testimonial-img"
-                                    alt="">
-                            </div>
-                            <div class="panel-body post-body-berita">
-                                <h5><b>{{ $berita->judul }}</b></h5>
-                                <h6>{{ $berita->penulis }} - {{ $berita->created_at->diffForHumans() }}</h6>
-                                <a href="/berita/{{ $berita->id }}" target="_blank">Baca selengkapnya</a>
-                                <p>
-                                    {!! substr($berita->deskripsi, 0, 220) !!}.....
-                                </p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-            <div class="fw-bold kelola-data m-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                <ul>
-                    <li class="drop-down">
-                        <a>Kelola Data</a>
-                        <ul>
-                            <li><a class="dropdown-item" href="{{ route('berita.index') }}">Edit</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
         <!-- End Berita Section -->
 
         <!-- ======= Services Section ======= -->
@@ -261,7 +215,8 @@
                         {!! $informasi_pendaftaran->deskripsi !!}
 
                         @if ($informasi_pendaftaran->status == 1)
-                            <a href="/register" class="btn btn-success" target="_blank" disabled data-aos="zoom-in"
+                            <a href="https://wa.me/{{ $contact->telpon }}?text=Saya+ingin+mendaftar+di+{{ $profile_madrasah->nama }}"
+                                class="btn btn-success" target="_blank" disabled data-aos="zoom-in"
                                 data-aos-duration="800" data-aos-delay="800">Daftar Sekarang</a>
                         @else
                             <a class="btn btn-danger disabled" aria-disabled="true" data-aos="zoom-in"
@@ -320,16 +275,6 @@
                                 <p>{{ $contact->instagram }}</p>
                             </div>
 
-                            <div class="phone">
-                                <i class="icofont-facebook"></i>
-                                <h4>Facebook:</h4>
-                                <p>{{ $contact->facebook }}</p>
-                            </div>
-                            <div class="phone">
-                                <i class="icofont-twitter"></i>
-                                <h4>Twitter:</h4>
-                                <p>{{ $contact->twitter }}</p>
-                            </div>
                         </div>
                     </div>
 

@@ -200,11 +200,13 @@ h6 {
     right: 15px;
 }
 .kelola-data {
-    z-index: 2;
+    z-index: 999999;
     color: #000000;
     margin-top: 10px;
     width: fit-content;
+    position: relative; /* Pastikan elemen ini memiliki positioning untuk mengatur z-index */
 }
+
 .kelola-data ul {
     margin: 0;
     padding: 0;
@@ -242,9 +244,11 @@ h6 {
 .kelola-data .drop-down ul {
     display: block;
     position: absolute;
-    left: 14px;
-    top: calc(100% + 30px);
-    z-index: 99;
+    left: 0;
+    top: calc(
+        100% + 5px
+    ); /* Menambah sedikit jarak untuk menghindari elemen di bawah */
+    z-index: 1000; /* Menambah z-index agar dropdown selalu di atas */
     opacity: 0;
     visibility: hidden;
     padding: 10px 0;

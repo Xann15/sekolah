@@ -25,25 +25,23 @@
                 @foreach ($ekstrakulikuler as $data_ekskul)
                     <div class="col-md-4">
                         <div class="panel panel-default">
-
                             <div class="panel-heading post-thumb">
-                                <img class="card-img-top"
+                                <img class="card-img-top cardx"
                                     src="{{ URL::to('/') }}/foto_ekstrakulikuler/{{ $data_ekskul->foto }}" />
                             </div>
 
                             <div class="panel-body post-body">
                                 <a class="label label-default" href="#">{{ $data_ekskul->nama }}</a>
-                                <p class="card-text">{{ $data_ekskul->deskripsi }}</p>
+                                <p class="card-text">{{ Str::limit($data_ekskul->deskripsi, 100, '...') }}</p>
                                 <div class="post-author">
                                     <a href="{{ route('ekstrakulikuler.edit', $data_ekskul->id) }}"
                                         class="btn btn-sm btn-primary">Edit Data</a>
                                     <a href="/admin/ekstrakulikuler/{{ $data_ekskul->id }}/destroy"
-                                        class="btn btn-danger btn-sm my-1 mr-sm-1"
-                                        onclick="return confirm('Hapus Data ?')"><i class="nav-icon fas fa-trash"></i>
-                                        Hapus Data</a>
+                                        class="btn btn-danger btn-sm my-1 mr-sm-1" onclick="return confirm('Hapus Data ?')">
+                                        <i class="nav-icon fas fa-trash"></i> Hapus Data
+                                    </a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 @endforeach
