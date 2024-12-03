@@ -9,7 +9,7 @@
                 <img src="{{ URL::to('/') }}/foto_gallery/{{ $gallery->foto }}" class="img-fluid jumbox" style="width: 100%"
                     alt="">
                 <div class="portfolio-info">
-                    <h3>Informasi Gallery</h3>
+                    <h3>Informasi Galeri</h3>
                     <ul>
                         <li><strong>Judul</strong>: {{ $gallery->judul }}</li>
                         <li><strong>Penulis</strong>: {{ $gallery->penulis }}</li>

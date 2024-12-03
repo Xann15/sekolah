@@ -6,11 +6,11 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Tulis Gallery Baru</h4>
+                <h4>Tulis Galeri Baru</h4>
                 <ol>
                     <li><a href="{{ route('home') }}">Dashboard</a></li>
-                    <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
-                    <li>Tulis Gallery</li>
+                    <li><a href="{{ route('gallery.index') }}">Galeri</a></li>
+                    <li>Tulis Galeri</li>
                 </ol>
             </div>
             <section id="contact" class="contact pt-3 pb-3">

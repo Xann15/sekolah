@@ -6,10 +6,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Gallery</h4>
+                <h4>Galeri</h4>
                 <ol>
                     <li><a href="{{ route('home') }}">Dashboard</a></li>
-                    <li>Gallery</li>
+                    <li>Galeri</li>
                 </ol>
             </div>
 
@@ -18,7 +18,7 @@
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about pt-3">
-        <div class="text-center pb-4"><a href="{{ route('gallery.create') }}" class="btn btn-md btn-success">Tulis Gallery
+        <div class="text-center pb-4"><a href="{{ route('gallery.create') }}" class="btn btn-md btn-success">Tulis Galeri
                 Baru</a></div>
         <div class="container">
             <div class="row">

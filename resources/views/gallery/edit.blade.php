@@ -6,11 +6,11 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Edit Gallery</h4>
+                <h4>Edit Galeri</h4>
                 <ol>
                     <li><a href="{{ route('home') }}">Dashboard</a></li>
-                    <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
-                    <li>Edit Gallery</li>
+                    <li><a href="{{ route('gallery.index') }}">Galeri</a></li>
+                    <li>Edit Galeri</li>
                 </ol>
             </div>
             <section id="contact" class="contact pt-3 pb-3">

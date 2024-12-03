@@ -3,8 +3,8 @@
 @section('content')
     <section id="program-studi-dan-jurusan">
         <div class="section-title" data-aos="fade-up" data-aos-duration="800">
-            <span>Gallery</span>
-            <h2>Gallery</h2>
+            <span>Galeri</span>
+            <h2>Galeri</h2>
         </div>
         <!-- ======= Portfolio Details Section ======= -->
         <section id="portfolio-details" class="portfolio-details">
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="portfolio-description">
-                    <h2>Gallery</h2>
+                    <h2>Galeri</h2>
                     <div class="row">
                         @foreach ($gallery as $data_gallery)
                             <div class="col-md-4 mb-3">
