@@ -1,5 +1,6 @@
 <?php
 
+use App\VisiMisi;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(KataSambutanKepsekSeeder::class);
         $this->call(ProfileMadrasahSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(VisiMisiSeeder::class);
     }
 }

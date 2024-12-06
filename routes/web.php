@@ -2,12 +2,13 @@
 
 use App\About;
 use App\Contact;
+use App\Gallery;
 use App\Jurusan;
+use App\VisiMisi;
 use App\Fasilitas;
 use App\GuruTendik;
 use App\Ekstrakulikuler;
 use App\ProfileMadrasah;
-use App\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -26,26 +27,28 @@ use App\Http\Controllers\AuthController;
 //     return view('welcome');
 // });
 // Route::get('/', 'LeandingPageController@index')->middleware('auth');
-Route::get('/', 'LeandingPageController@index');
 // Route::get('/', 'LeandingPageController@index')->middleware('auth');
 
 // Login
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
 // Register
 // Route::get('/register', [AuthController::class, 'register'])->name('register');
 // Route::post('/register', [AuthController::class, 'store'])->name('store');
 
 // Logout
-Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
-
-
 // Auth::routes();
 
+
+// Cara baca route::get('/halaman apa','aksi apa / nama controller yang bertanggung jawab')
+
+// halaman home, controllernya LeandingPageController@index method(nama fungsi di kontrollernya) index
+Route::get('/', 'LeandingPageController@index');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Admin
 Route::get('/admin/home', 'HomeController@index')->name('home');
 Route::resource('/admin/profilemadrasah', 'ProfileMadrasahController');
 Route::resource('/admin/ekstrakulikuler', 'EkstrakulikulerController');
@@ -61,18 +64,23 @@ Route::resource('/admin/program-studi-dan-jurusan', 'JurusanController');
 Route::get('/admin/program-studi-dan-jurusan/{id}/destroy', 'JurusanController@destroy');
 Route::resource('/admin/fasilitas', 'FasilitasController');
 Route::get('/admin/fasilitas/{id}/destroy', 'FasilitasController@destroy');
-
 Route::resource('/admin/gallery', 'GalleryController');
 Route::get('/admin/gallery/{id}/destroy', 'GalleryController@destroy');
 
 
 
+// USER
 Route::get('/gallery', function () {
+    // ngambil data data yang di perlukan di views ini
     $profile_madrasah = ProfileMadrasah::first();
     $gallery = Gallery::all();
+
+    // compact untuk ngirim data variabel(harus sesuai nama nya) ke views supaya bisa dipakai
     return view('page.gallery.index', compact('profile_madrasah', 'gallery'));
 });
 
+
+// sama aja konsepnya kaya yg diatas
 Route::get('/gallery/{id}', function ($id) {
     $profile_madrasah = ProfileMadrasah::first();
 
@@ -90,7 +98,8 @@ Route::get('/about', function () {
     $profile_madrasah = ProfileMadrasah::first();
     $gurutendik = GuruTendik::all();
     $about = About::first();
-    return view('page.about.index', compact('profile_madrasah', 'about', 'gurutendik'));
+    $visimisi = VisiMisi::first();
+    return view('page.about.index', compact('profile_madrasah', 'about', 'gurutendik', 'visimisi'));
 });
 Route::get('/program-studi-dan-jurusan', function () {
     $profile_madrasah = ProfileMadrasah::first();
